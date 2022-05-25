@@ -5,6 +5,7 @@ import { Fragment, useState } from "react";
 import Layout from "../components/Layout";
 import Select from "../components/Select";
 import Footer from "../components/Footer";
+import Popup from '../components/Popup';
 
 const grades = [
   { name: "First Class" },
@@ -31,10 +32,34 @@ const courses = [
 
   ];
 
-export default function GetCertified() {
-  const [selectedGrades, setSelectedGrades] = useState(grades[0]);
-  const [selectedCourse, setSelectedCourse] = useState(courses[0]);
-  const [name, setName] = useState("");
+  
+  export default function GetCertified() {
+      const [selectedGrades, setSelectedGrades] = useState(grades[0]);
+      const [selectedCourse, setSelectedCourse] = useState(courses[0]);
+      const [name, setName] = useState("");
+
+      const handleSubmit = e => {
+        e.preventDefault();
+        console.log(selectedGrades, selectedCourse, name);
+        openPopup();
+      };
+
+    //   Open Popup Modal
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [popupDetails, setPopupDetails] = useState({
+        title: "",
+        message: "",
+        buttonText: "",
+    });
+    const openPopup = () => {
+        let details = {
+            title: "Text",
+            message: "This is a drill",
+            buttonText: "Okay",
+        }
+        setPopupDetails(details);
+        setIsPopupOpen(true);
+    };
   return (
     <div className={styles.container}>
       <Layout>
@@ -53,8 +78,9 @@ export default function GetCertified() {
             <label>
             <Select list={courses} selected={selectedCourse} setSelected={setSelectedCourse} />
             </label>
-            <button>Get Certified</button>
+            <button onClick={handleSubmit}>Get Certified</button>
           </form>
+          <Popup isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} details={popupDetails}/>
         </section>
       </Layout>
 
