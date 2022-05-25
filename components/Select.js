@@ -3,7 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
 const Select = (props) => {
-    
+    const { list, selected, setSelected } = props;
     return (
         <div className="fixed top-16 w-72">
         <Listbox value={selected} onChange={setSelected}>
@@ -24,15 +24,15 @@ const Select = (props) => {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {people.map((person, personIdx) => (
+                {list.map((item, itemIdx) => (
                   <Listbox.Option
-                    key={personIdx}
+                    key={itemIdx}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
                         active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
                       }`
                     }
-                    value={person}
+                    value={item}
                   >
                     {({ selected }) => (
                       <>
@@ -41,7 +41,7 @@ const Select = (props) => {
                             selected ? 'font-medium' : 'font-normal'
                           }`}
                         >
-                          {person.name}
+                          {item.name}
                         </span>
                         {selected ? (
                           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
