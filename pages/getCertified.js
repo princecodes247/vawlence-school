@@ -40,6 +40,12 @@ const courses = [
 
       const handleSubmit = e => {
         e.preventDefault();
+        // Check if name is empty
+        if (name.trim() === "") {
+          console.log("Name is empty");
+          openPopup();
+          return;
+        }
         console.log(selectedGrades, selectedCourse, name);
         openPopup();
       };
@@ -61,7 +67,7 @@ const courses = [
         setIsPopupOpen(true);
     };
   return (
-    <div className={styles.container}>
+    <div className=''>
       <Layout>
         <section className="">
           <form>
