@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.6.3",
     "@heroicons/react": "^1.0.6",
     "framer-motion": "^6.3.4",
+    "mongoose": "^6.3.4",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
