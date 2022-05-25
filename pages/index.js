@@ -5,7 +5,10 @@ import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 
-export default function Home() {
+import { connect } from "../utils/connection";
+
+export default function Home({ comrades}) {
+  console.log(comrades)
   return (
     <div className={styles.container}>
       <Head>
@@ -33,6 +36,23 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  // const res = await axios.get('/api/ip');
+  const { Comrade } = await connect();
+  // console.log(s)
+  const comrades = await Comrade.find() // get all comrades
+        .then((comrades) => {
+          console.log(comrades, "qwert")
+          res.json(comrades);
+        }) // return comrades
+
+  return {
+    props: { comrades },
+    revalidate: 20,
+  };
+};
+
 
 // TODO: Create basic styling
 // TODO: Fetch graduates from API
