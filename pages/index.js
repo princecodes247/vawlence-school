@@ -27,7 +27,28 @@ function Home({comrades}) {
 
         <section className="">
           <h2 className="">Current Holders of Vawulence</h2>
-
+          <div className="flex flex-wrap">
+            {comrades.map((comrade) => (
+              <div className="w-1/2 p-4" key={comrade._id}>
+                <div className="flex flex-col">
+                  <div className="flex flex-row">
+                    {/* <Image
+                      src={comrade.image}
+                      width={100}
+                      height={100}
+                      alt={comrade.name}
+                    /> */}
+                    <div className="flex flex-col ml-4">
+                      <h3 className="text-xl">{comrade.name}</h3>
+                      <p className="text-sm">{comrade.department}</p>
+                      <p className="text-sm">{comrade.gpa}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+                      
           <button>Enroll here</button>
         </section>
       </Layout>
@@ -48,8 +69,12 @@ export async function getStaticProps() {
           return res;
         }) // return comrades
         console.log(comrades, "comrades")
+        // .catch((err) => console.log(err)); // catch errors
   return {
-    props: {comrades},
+
+    props: {
+      comrades: JSON.parse(JSON.stringify(comrades))
+    },
     revalidate: 20,
   };
 };
