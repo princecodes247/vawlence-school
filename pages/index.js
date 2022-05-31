@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 import { connect } from "../utils/connection";
 
-export default function Home({ comrades}) {
+function Home({comrades}) {
   console.log(comrades)
   return (
     <div className={styles.container}>
@@ -22,13 +22,13 @@ export default function Home({ comrades}) {
           <h1 className="text-3xl">We love Vawulence!</h1>
           <p>Become a certified something of Vawulence Today</p>
 
-          <button>Click me</button>
+          <button>Enroll here</button>
         </section>
 
         <section className="">
           <h2 className="">Current Holders of Vawulence</h2>
 
-          <button>Click me</button>
+          <button>Enroll here</button>
         </section>
       </Layout>
 
@@ -37,18 +37,19 @@ export default function Home({ comrades}) {
   );
 }
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
   // const res = await axios.get('/api/ip');
   const { Comrade } = await connect();
   // console.log(s)
   const comrades = await Comrade.find() // get all comrades
-        .then((comrades) => {
-          console.log(comrades, "qwert")
-          res.json(comrades);
+        .then((res) => {
+          console.log(res, "qwert")
+          // res.json(comrades);
+          return res;
         }) // return comrades
-
+        console.log(comrades, "comrades")
   return {
-    props: { comrades },
+    props: {comrades},
     revalidate: 20,
   };
 };
@@ -56,3 +57,5 @@ export const getStaticProps = async () => {
 
 // TODO: Create basic styling
 // TODO: Fetch graduates from API
+
+export default Home;

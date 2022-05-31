@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { AnimatePresence } from 'framer-motion'
 
-function MyApp({ Component }) {
+function MyApp({ Component, pageProps }) {
   // 2. Use at the root of your app
   return (
     
@@ -12,7 +12,7 @@ function MyApp({ Component }) {
                 initial={false}
                 onExitComplete={() => window.scrollTo(0, 0)}
             >
-                <Component />
+                <Component {...pageProps} />
             </AnimatePresence>
             {/* <Footer /> */}
       </>
