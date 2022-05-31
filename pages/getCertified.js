@@ -35,7 +35,7 @@ const courses = [
       // const [selectedGrades, setSelectedGrades] = useState(grades[0]);
       const [selectedCourse, setSelectedCourse] = useState(courses[0]);
       const [secondCourses, setSecondCourses] = useState([...courses]);
-      const [selectedSecondCourse, setSelectedSecondCourse] = useState(secondCourses[0]);
+      const [selectedSecondCourse, setSelectedSecondCourse] = useState(secondCourses[1]);
       const handleSetFirstChoice = (value) => {
         setSelectedCourse(value)
         // Remove value from second courses
@@ -50,11 +50,38 @@ const courses = [
         // Check if name is empty
         if (name.trim() === "") {
           console.log("Name is empty");
-          openPopup();
+
+          openPopup("Name is empty", "Please enter a valid name", "OK", true);
           return;
         }
-        console.log(selectedGrades, selectedCourse, name);
-        openPopup();
+        console.log(selectedCourse, selectedSecondCourse, name);
+        fetch("/api/comrades", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name,
+              choice: selectedCourse.name,
+              secondChoice: selectedSecondCourse.name
+              })
+        }).then(res => {
+          console.log(res);
+          if (res.status === 200) {
+            res.json().then(data => {
+              console.log(data);
+              // setComrades(data);
+              openPopup("Success", "You have graduated COMRADE!", "Zazu!", false);
+            });
+          } else if (res.status === 500) {
+            console.log("Server error");
+            openPopup();
+          } else if (res.status === 409) {
+            console.log(res);
+            // setComrades(data);
+            openPopup("Ah ah...", name + ", You have already graduated!", "Nawa...", true);
+          }
+        });
       };
 
     //   Open Popup Modal
@@ -64,11 +91,12 @@ const courses = [
         message: "",
         buttonText: "",
     });
-    const openPopup = () => {
+    const openPopup = (title, message, buttonText, error) => {
         let details = {
-            title: "Text",
-            message: "This is a drill",
-            buttonText: "Okay",
+            title,
+            message,
+            buttonText,
+            error
         }
         setPopupDetails(details);
         setIsPopupOpen(true);
