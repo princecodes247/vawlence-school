@@ -11,8 +11,10 @@ const handler = async (req, res) => {
   const handleCase = {
     // RESPONSE FOR GET REQUESTS
     GET: async (req, res) => {
+      const { tag } = req.query;
+      console.log("no na here");
       const { Comrade } = await connect(); // connect to database
-      const comrades = await Comrade.find() // get all comrades
+      const comrades = await Comrade.find({tag}) // get all comrades
         .then((comrades) => {
           // console.log(comrades, "qwert")
           res.json(comrades);
@@ -24,12 +26,13 @@ const handler = async (req, res) => {
       const { Comrade } = await connect(); // connect to database
 
 
-      let { name, choice, secondChoice } = req.body;
+      let { tag, name, choice, secondChoice } = req.body;
       name = name.toLowerCase();
+      tag = tag.toLowerCase();
       choice = choice.toLowerCase();
       secondChoice = secondChoice.toLowerCase();
 
-      const checkComrades = await Comrade.find({ name });
+      const checkComrades = await Comrade.find({ tag });
       console.log(checkComrades, "checkComrades");
       if (checkComrades && checkComrades.length > 0) {
         res.status(409).json({ error: "Comrade Already Exists" });
@@ -63,7 +66,17 @@ const handler = async (req, res) => {
           {name: "Vawulence Arts", weight: 1},
           {name: "Medical Vawulence", weight: 1},
         ];
+        let moreDepartments = [
+          {name: "Vawulence & Law", weight: 1},
+          {name: "Vawulence & Science", weight: 1},
+          {name: "Bio-Vawulence", weight: 1},
+          {name: "Geo-Vawulence", weight: 1},
+          {name: "Enviromental Vawulence", weight: 1},
+          {name: "Marine Vawulence", weight: 1},
+          {name: "Vawutronics", weight: 1},
+        ]
         departments = departments.map((department) => {
+          let size = 50;
           if (department.name === choice) {
             department.weight = department.weight * 26;
           }
@@ -78,6 +91,7 @@ const handler = async (req, res) => {
           for (i in prob) {
             sum += prob[i].weight;
             if (r <= sum) return i;
+            return 1;
           }
       
         }
@@ -85,9 +99,11 @@ const handler = async (req, res) => {
         return departments[res].name;
       };
       
-      const department = randomDepartment("Vawulence & Communication", "Vawulence Education")
+      const department = randomDepartment(choice,secondChoice);
       const gpa = randomCGPA(1);
       const details = {
+        // Remove spaces, numbers, and special characters from tag
+        tag: name.toLowerCase().replace(/\s/g, "").replace(/\d/g, "").replace(/[^a-zA-Z]/g, ""),
         name,
         department,
         gpa,

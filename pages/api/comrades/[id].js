@@ -1,5 +1,4 @@
 import { connect } from "../../../utils/connection"
-import { ResponseFuncs } from "../../../utils/types"
 
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
@@ -15,8 +14,11 @@ const handler = async (req, res) => {
   const handleCase = {
     // RESPONSE FOR GET REQUESTS
     GET: async (req, res) => {
+      const { id } = req.query;
       const { Comrade } = await connect() // connect to database
-      res.json(await Comrade.findById(id).catch(catcher))
+      console.log("na here", id)
+      res.json(await Comrade.findOne({tag: id}).catch(catcher))
+
     },
     // RESPONSE PUT REQUESTS
     PUT: async (req, res) => {
