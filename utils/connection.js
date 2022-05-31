@@ -24,13 +24,9 @@ export const connect = async () => {
       type: String,
       required: true,
     },
-    degree: {
-        type: String,
-        required: true,
-      },
       gpa: {
         type: Number,
-        default: Math.random() * 4 + 2,
+        default: Math.round((Math.random() * 4 + 2) * 100) / 100,
         required: false,
       },
     date: {
