@@ -62,6 +62,7 @@ const courses = [
             },
             body: JSON.stringify({
               name,
+              tag: name.toLowerCase(),
               choice: selectedCourse.name,
               secondChoice: selectedSecondCourse.name
               })
