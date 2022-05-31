@@ -1,5 +1,6 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from "mongoose"
+// const shortid = require("shortid");
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env)
 // const DATABASE_URL = process.env.DATABASE_URL
@@ -16,6 +17,10 @@ export const connect = async () => {
 
   // COMRADE SCHEMA
   const ComradeSchema = new mongoose.Schema({
+    tag: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
