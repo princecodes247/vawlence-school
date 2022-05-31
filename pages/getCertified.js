@@ -7,14 +7,14 @@ import Select from "../components/Select";
 import Footer from "../components/Footer";
 import Popup from '../components/Popup';
 
-const grades = [
-  { name: "First Class" },
-  { name: "Second Class Upper" },
-  { name: "Second Class Lower" },
-  { name: "Pass" },
-  { name: "Withdrawn" },
-  { name: "Peace" },
-];
+// const grades = [
+//   { name: "First Class" },
+//   { name: "Second Class Upper" },
+//   { name: "Second Class Lower" },
+//   { name: "Pass" },
+//   { name: "Withdrawn" },
+//   { name: "Peace" },
+// ];
 const courses = [
     { name: "Pure and Applied Vawulence" },
     { name: "Vawulence & Communication" },
@@ -31,11 +31,18 @@ const courses = [
     { name: "Medical Vawulence" },
 
   ];
-
-  
   export default function GetCertified() {
-      const [selectedGrades, setSelectedGrades] = useState(grades[0]);
+      // const [selectedGrades, setSelectedGrades] = useState(grades[0]);
       const [selectedCourse, setSelectedCourse] = useState(courses[0]);
+      const [secondCourses, setSecondCourses] = useState([...courses]);
+      const [selectedSecondCourse, setSelectedSecondCourse] = useState(secondCourses[0]);
+      const handleSetFirstChoice = (value) => {
+        setSelectedCourse(value)
+        // Remove value from second courses
+        const newList = [...courses].filter(item => item.name !== value.name)
+        setSecondCourses(newList)
+        setSelectedSecondCourse(newList[0])
+      }
       const [name, setName] = useState("");
 
       const handleSubmit = e => {
@@ -79,10 +86,11 @@ const courses = [
               />
             </label>
             <label>
-              <Select list={grades} selected={selectedGrades} setSelected={setSelectedGrades} />
+            <Select list={courses} selected={selectedCourse} setSelected={handleSetFirstChoice} />
             </label>
             <label>
-            <Select list={courses} selected={selectedCourse} setSelected={setSelectedCourse} />
+            <Select list={secondCourses} selected={selectedSecondCourse} setSelected={setSelectedSecondCourse} />
+            {/* <Select list={secondCourses} selected={selectedSecondCourse} setSelected={setSecondCourses} /> */}
             </label>
             <button onClick={handleSubmit}>Get Certified</button>
           </form>
