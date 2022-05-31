@@ -23,36 +23,77 @@ const handler = async (req, res) => {
     POST: async (req, res) => {
       const { Comrade } = await connect(); // connect to database
 
-      let { name, department, degree } = req.body;
+
+      let { name, choice, secondChoice } = req.body;
       name = name.toLowerCase();
-      degree = degree.toLowerCase();
+      choice = choice.toLowerCase();
+      secondChoice = secondChoice.toLowerCase();
 
       const checkComrades = await Comrade.find({ name });
-      if (checkComrades) {
-        res.status(400).json({ error: "Comrade Already Exists" });
+      console.log(checkComrades, "checkComrades");
+      if (checkComrades && checkComrades.length > 0) {
+        res.status(409).json({ error: "Comrade Already Exists" });
         return;
       }
-      // Create random GPA from degree
-      let upper = 1;
-      let lower = 1;
-      if (degree.includes("first")) {
-        upper = 0.5;
-        lower = 4.5;
-      } else if (degree.includes("upper")) {
-        lower = 3.49;
-      } else if (degree.includes("lower")) {
-        lower = 2.49;
-      } else if (degree.includes("pass")) {
-        lower = 0.49;
-      } else if (degree.includes("withdrawn")) {
-        upper = 0.49;
-        lower = 0;
-      } else {
-        upper = -4;
-        lower = 1;
+      const randomCGPA = (upperLimit) => {
+        const cgpas = [4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 1];
+        // return a random number between 0 and 5
+        const lowerLimit = cgpas[Math.floor(Math.random() * (cgpas.length-1))]
+        let res = Math.random() * upperLimit + lowerLimit;
+        // Round to two decimal places
+        res = Math.round(res * 100) / 100;
+        return res;
+      };
+
+      
+      // Generate random department with high chance of being one of the choices
+      const randomDepartment = (choice, secondChoice) => {
+        let departments = [
+          {name: "Pure and Applied Vawulence", weight: 1},
+          {name: "Vawulence & Communication", weight: 1},
+          {name: "Political Vawulence", weight: 1},
+          {name: "Industrial Vawulence", weight: 1},
+          {name: "Vawulence & Finance", weight: 1},
+          {name: "Vawulence Engineering", weight: 1},
+          {name: "International Vawulence", weight: 1},
+          {name: "Mass Vawulence", weight: 1},
+          {name: "Vawulence Studies", weight: 1},
+          {name: "Vawulence Education", weight: 1},
+          {name: "Advanced Vawulence", weight: 1},
+          {name: "Vawulence Arts", weight: 1},
+          {name: "Medical Vawulence", weight: 1},
+        ];
+        departments = departments.map((department) => {
+          if (department.name === choice) {
+            department.weight = department.weight * 26;
+          }
+          if (department.name === secondChoice) {
+            department.weight = department.weight * 13;
+          }
+          department.weight = department.weight / 50;
+          return department;
+        });
+        function weightedRandom(prob) {
+          let i, sum=0, r=Math.random();
+          for (i in prob) {
+            sum += prob[i].weight;
+            if (r <= sum) return i;
+          }
+      
+        }
+        const res = weightedRandom(departments)
+        return departments[res].name;
+      };
+      
+      const department = randomDepartment("Vawulence & Communication", "Vawulence Education")
+      const gpa = randomCGPA(1);
+      const details = {
+        name,
+        department,
+        gpa,
       }
-      const gpa = Math.random() * upper + lower;
-      const newComrade = new Comrade({ name, department, degree, gpa });
+      console.log(details, "details");
+      const newComrade = new Comrade(details);
       await newComrade
         .save()
         .then((comrade) => {
