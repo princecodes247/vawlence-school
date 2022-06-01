@@ -72,7 +72,7 @@ const courses = [
             res.json().then(data => {
               console.log(data);
               // setComrades(data);
-              openPopup("Success", "You have graduated COMRADE!", "Zazu!", false);
+              openPopup("Success", "You have graduated COMRADE!", "Zazu!", false, "/comrade/"+data.tag);
             });
           } else if (res.status === 500) {
             console.log("Server error");
@@ -92,42 +92,46 @@ const courses = [
         message: "",
         buttonText: "",
     });
-    const openPopup = (title, message, buttonText, error) => {
+    const openPopup = (title, message, buttonText, error, target="") => {
         let details = {
             title,
             message,
             buttonText,
-            error
+            error,
+            target
         }
         setPopupDetails(details);
         setIsPopupOpen(true);
     };
   return (
-    <div className=''>
-      <Layout>
-        <section className="">
-          <form>
-            <label>
+    <Layout>
+        <h2 className="text-center font-bold self-center text-2xl px-8 sm:px-0 sm:text-4xl">Vawulence Enrollment Form</h2>
+        <section className="w-full flex item-center justify-center h-full pt-8 sm:pt-16">
+          <form className="sm:w-2/5 sm:border sm:border-gray-300 rounded p-8 flex flex-col gap-2">
+            <label className="">
+              <p className="text-gray-600 text-sm">Your name</p>
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Emeka Billions"
+                className="border border-gray-200 p-2 w-full rounded"
+
               />
             </label>
-            <label>
+            <label className="">
+            <p className="text-gray-600 text-sm">First choice of Study</p>
             <Select list={courses} selected={selectedCourse} setSelected={handleSetFirstChoice} />
             </label>
-            <label>
+            <label className="">
+            <p className="text-gray-600 text-sm">Second choice of Study</p>
             <Select list={secondCourses} selected={selectedSecondCourse} setSelected={setSelectedSecondCourse} />
             {/* <Select list={secondCourses} selected={selectedSecondCourse} setSelected={setSecondCourses} /> */}
             </label>
-            <button onClick={handleSubmit}>Get Certified</button>
+            <button  className="mt-6 p-2 px-4 text-white rounded bg-primary" onClick={handleSubmit}>Get Certified</button>
           </form>
           <Popup isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} details={popupDetails}/>
         </section>
       </Layout>
 
-      <Footer />
-    </div>
   );
 }
