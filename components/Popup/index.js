@@ -1,5 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import Link from "next/link"
 
 function Popup(props) {
   let {isOpen, setIsOpen, details} = props
@@ -69,13 +70,17 @@ function Popup(props) {
                       onClick={closeModal}
                     >
                       {details.buttonText}
-                    </button> :  <button
+                    </button> :  
+                    <Link href={details.target}>
+                    <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-12 sm:px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       {details.buttonText}
-                    </button>}
+                    </button>
+                    </Link>
+                    }
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
