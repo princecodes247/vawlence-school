@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.3",
     "@heroicons/react": "^1.0.6",
+    "avvvatars-react": "^0.4.2",
     "framer-motion": "^6.3.4",
     "mongoose": "^6.3.4",
     "next": "12.1.6",
