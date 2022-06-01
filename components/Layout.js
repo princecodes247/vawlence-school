@@ -3,9 +3,9 @@ import React, { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
 const variants = {
-    hidden: { opacity: 0, x: -200, y: 0 },
+    hidden: { opacity: 0, x: 0, y: -5 },
     enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
+    exit: { opacity: 0, x: 0, y: 10 },
 }
 
 const Layout = ({ children, title, description }) => (
@@ -16,7 +16,8 @@ const Layout = ({ children, title, description }) => (
             animate="enter"
             exit="exit"
             variants={variants}
-            transition={{ type: 'linear' }}
+            key="appBody"
+            transition={{ type: 'linear', default: { duration: 0.5 }, }}
             className="
                     flex flex-col items-start w-full min-h-screen
                 "
