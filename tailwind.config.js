@@ -5,11 +5,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "380px",
+      },
       colors: {
         primary: "#495732"
       },
       fontFamily: {
-        'body': ['"Open Sans"', ],
+        'body': ['"Poppins"', ],
         'header': ['"Syne"', ],
       }
       
