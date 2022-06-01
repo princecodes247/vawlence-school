@@ -1,10 +1,11 @@
 
 const Footer = () => (
-    <footer className=''>
+    <footer className='p-4 text-center bg-gray-100'>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://princecodes.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
+          className="font-semibold"
         >
           Created by PrinceCodes
         </a>
