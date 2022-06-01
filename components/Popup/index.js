@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import Link from "next/link"
+import Image from "next/image"
 
 function Popup(props) {
   let {isOpen, setIsOpen, details} = props
@@ -50,7 +51,14 @@ function Popup(props) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center sm:text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
+                  <Image
+                  src={`${details.error ? "/glasses.jpeg": "/success.webp"}`}
+                  width={200}
+                  height={details.error ? 100 : 200}
+                  alt="Comrade"
+                  />
+
                   <Dialog.Title
                     as="h3"
                     className="text-xl font-medium leading-6 text-gray-900"
