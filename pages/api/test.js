@@ -25,22 +25,24 @@ const createComradeCertificate = async (name, dept, comradeClass, date) => {
     972,
     500
   );
+  await certificate.scale(1.3);
   certificate.print(
-    font2,
+    font,
     0,
-    310,
+    230 * 1.3,
     {
       text: dept,
       alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
       // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
     },
-    972,
+    972 * 1.3,
     500
   );
+  await certificate.scale(0.768);
   certificate.print(
     font2,
     0,
-    510,
+    262,
     {
       text: comradeClass,
       alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
@@ -52,7 +54,7 @@ const createComradeCertificate = async (name, dept, comradeClass, date) => {
   certificate.print(
     font2,
     0,
-    570,
+    535,
     {
       text: date,
       alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
@@ -79,7 +81,7 @@ const handler = async (req, res) => {
     GET: async (req, res) => {
       createComradeCertificate(
         "John Doe",
-        "Computer Science",
+        "Political Vawulence",
         "A",
         "2020-01-01"
       );

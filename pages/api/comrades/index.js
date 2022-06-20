@@ -1,8 +1,15 @@
 import { connect } from "../../../utils/connection";
 const Jimp = require("jimp");
 
-const createComradeCertificate = async (name, dept, comradeClass, date) => {
-  const certificate = await Jimp.read("./src/assets/fakeCert.png");
+const createComradeCertificate = async (
+  name,
+  dept,
+  comradeClass,
+  date,
+  tag
+) => {
+  const certificate = await Jimp.read("./public/fakeCert.png");
+  // const font = await Jimp.loadFont("./public/test.fnt");
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
 
@@ -10,15 +17,62 @@ const createComradeCertificate = async (name, dept, comradeClass, date) => {
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
-
-  certificate.print(font, 100, 100, nameText);
-  certificate.print(font2, 100, 150, dept);
-  certificate.print(font2, 100, 180, comradeClass);
-  certificate.print(font2, 100, 210, date);
+  await certificate.scale(1.2);
+  // certificate.print(font, 430, 110, nameText);
+  certificate.print(
+    font,
+    0,
+    110,
+    {
+      text: nameText,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
+  await certificate.scale(1.3);
+  certificate.print(
+    font,
+    0,
+    230 * 1.3,
+    {
+      text: dept,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972 * 1.3,
+    500
+  );
+  await certificate.scale(0.768);
+  certificate.print(
+    font2,
+    0,
+    262,
+    {
+      text: comradeClass,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
+  certificate.print(
+    font2,
+    0,
+    535,
+    {
+      text: date,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
+  certificate.write(`./public/certificates/${tag}.png`);
 
   return certificate;
 };
-
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
   const method = req.method;
@@ -136,6 +190,21 @@ const handler = async (req, res) => {
       await newComrade
         .save()
         .then((comrade) => {
+          createComradeCertificate(
+            details.name,
+            details.department,
+            details.gpa >= 4.5
+              ? "(First-Class)"
+              : result.gpa >= 3.5
+              ? "(Second-Class Upper)"
+              : result.gpa >= 2.5
+              ? "(Second-Class Lower)"
+              : result.gpa >= 1.5
+              ? "(Pass)"
+              : "(Peace)",
+            "",
+            details.tag
+          );
           res.status(200).json(comrade);
         })
         .catch(catcher);
