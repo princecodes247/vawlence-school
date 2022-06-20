@@ -3,15 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NavMenu from './NavMenu';
 import { Fragment, useState } from "react";
-
+import Logo from "../public/logo.webp"
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 return (
-    <header className="p-2 relative px-8 sm:px-24 bg-white flex items-center justify-between ">
+    <header className="relative flex items-center justify-between p-2 px-8 bg-gray-100 sm:px-24 ">
      <Link href="/">
      <div className="cursor-pointer">
          <Image
-            src="/logo.webp"
+            src={Logo}
             width={50}
             height={50}
             alt="Comrade"
@@ -19,19 +19,19 @@ return (
      </div>
             </Link>
          
-            <ul className="flex gap-3 items-center hidden">
+            <ul className="flex items-center hidden gap-3">
                 <li>Home</li>
                 <li>About</li>
                 <li>Contact</li>
             </ul>
             <Link href="/getCertified">
-            <button className="p-2 px-6 hidden sm:block rounded text-xl inline-block bg-primary font-body text-white">
+            <button className="hidden inline-block p-2 px-6 text-xl text-white rounded sm:block bg-primary font-body">
                 Get Certified
             </button>
             </Link>
             <button
             onClick={() => setIsOpen(!isOpen)}
-             className="p-2 px-6 block sm:hidden text-xl inline-block bg-primary font-body text-white">
+             className="block inline-block p-2 px-6 text-xl text-white sm:hidden bg-primary font-body">
                 .
             </button>
             { isOpen ? <NavMenu />:""}
