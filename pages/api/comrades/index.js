@@ -1,4 +1,21 @@
 import { connect } from "../../../utils/connection";
+const Jimp = require('jimp')
+
+const createComradeCertificate = async (name, dept, comradeClass, date) => {
+  const certificate = await Jimp.read('./src/assets/certificate.png')
+  const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK)
+  const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK)
+  
+  const nameText = name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+
+  certificate.print(font, 100, 100, nameText)
+  certificate.print(font2, 100, 150, dept)
+  certificate.print(font2, 100, 180, comradeClass)
+  certificate.print(font2, 100, 210, date)
+
+  return certificate
+}
+
 
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
