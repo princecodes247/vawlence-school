@@ -1,21 +1,23 @@
 import { connect } from "../../../utils/connection";
-const Jimp = require('jimp')
+const Jimp = require("jimp");
 
 const createComradeCertificate = async (name, dept, comradeClass, date) => {
-  const certificate = await Jimp.read('./src/assets/certificate.png')
-  const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK)
-  const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK)
-  
-  const nameText = name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+  const certificate = await Jimp.read("./src/assets/fakeCert.png");
+  const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
+  const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
 
-  certificate.print(font, 100, 100, nameText)
-  certificate.print(font2, 100, 150, dept)
-  certificate.print(font2, 100, 180, comradeClass)
-  certificate.print(font2, 100, 210, date)
+  const nameText = name
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
-  return certificate
-}
+  certificate.print(font, 100, 100, nameText);
+  certificate.print(font2, 100, 150, dept);
+  certificate.print(font2, 100, 180, comradeClass);
+  certificate.print(font2, 100, 210, date);
 
+  return certificate;
+};
 
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
@@ -31,7 +33,7 @@ const handler = async (req, res) => {
       const { tag } = req.query;
       console.log("no na here");
       const { Comrade } = await connect(); // connect to database
-      const comrades = await Comrade.find({tag}) // get all comrades
+      const comrades = await Comrade.find({ tag }) // get all comrades
         .then((comrades) => {
           // console.log(comrades, "qwert")
           res.json(comrades);
@@ -41,7 +43,6 @@ const handler = async (req, res) => {
     // RESPONSE POST REQUESTS
     POST: async (req, res) => {
       const { Comrade } = await connect(); // connect to database
-
 
       let { tag, name, choice, secondChoice } = req.body;
       name = name.toLowerCase();
@@ -58,40 +59,40 @@ const handler = async (req, res) => {
       const randomCGPA = (upperLimit) => {
         const cgpas = [4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 1];
         // return a random number between 0 and 5
-        const lowerLimit = cgpas[Math.floor(Math.random() * (cgpas.length-1))]
+        const lowerLimit =
+          cgpas[Math.floor(Math.random() * (cgpas.length - 1))];
         let res = Math.random() * upperLimit + lowerLimit;
         // Round to two decimal places
         res = Math.round(res * 100) / 100;
         return res;
       };
 
-      
       // Generate random department with high chance of being one of the choices
       const randomDepartment = (choice, secondChoice) => {
         let departments = [
-          {name: "Pure and Applied Vawulence", weight: 1},
-          {name: "Vawulence & Communication", weight: 1},
-          {name: "Political Vawulence", weight: 1},
-          {name: "Industrial Vawulence", weight: 1},
-          {name: "Vawulence & Finance", weight: 1},
-          {name: "Vawulence Engineering", weight: 1},
-          {name: "International Vawulence", weight: 1},
-          {name: "Mass Vawulence", weight: 1},
-          {name: "Vawulence Studies", weight: 1},
-          {name: "Vawulence Education", weight: 1},
-          {name: "Advanced Vawulence", weight: 1},
-          {name: "Vawulence Arts", weight: 1},
-          {name: "Medical Vawulence", weight: 1},
+          { name: "Pure and Applied Vawulence", weight: 1 },
+          { name: "Vawulence & Communication", weight: 1 },
+          { name: "Political Vawulence", weight: 1 },
+          { name: "Industrial Vawulence", weight: 1 },
+          { name: "Vawulence & Finance", weight: 1 },
+          { name: "Vawulence Engineering", weight: 1 },
+          { name: "International Vawulence", weight: 1 },
+          { name: "Mass Vawulence", weight: 1 },
+          { name: "Vawulence Studies", weight: 1 },
+          { name: "Vawulence Education", weight: 1 },
+          { name: "Advanced Vawulence", weight: 1 },
+          { name: "Vawulence Arts", weight: 1 },
+          { name: "Medical Vawulence", weight: 1 },
         ];
         let moreDepartments = [
-          {name: "Vawulence & Law", weight: 1},
-          {name: "Vawulence & Science", weight: 1},
-          {name: "Bio-Vawulence", weight: 1},
-          {name: "Geo-Vawulence", weight: 1},
-          {name: "Enviromental Vawulence", weight: 1},
-          {name: "Marine Vawulence", weight: 1},
-          {name: "Vawutronics", weight: 1},
-        ]
+          { name: "Vawulence & Law", weight: 1 },
+          { name: "Vawulence & Science", weight: 1 },
+          { name: "Bio-Vawulence", weight: 1 },
+          { name: "Geo-Vawulence", weight: 1 },
+          { name: "Enviromental Vawulence", weight: 1 },
+          { name: "Marine Vawulence", weight: 1 },
+          { name: "Vawutronics", weight: 1 },
+        ];
         departments = departments.map((department) => {
           let size = 50;
           if (department.name === choice) {
@@ -104,27 +105,32 @@ const handler = async (req, res) => {
           return department;
         });
         function weightedRandom(prob) {
-          let i, sum=0, r=Math.random();
+          let i,
+            sum = 0,
+            r = Math.random();
           for (i in prob) {
             sum += prob[i].weight;
             if (r <= sum) return i;
             return 1;
           }
-      
         }
-        const res = weightedRandom(departments)
+        const res = weightedRandom(departments);
         return departments[res].name;
       };
-      
-      const department = randomDepartment(choice,secondChoice);
+
+      const department = randomDepartment(choice, secondChoice);
       const gpa = randomCGPA(1);
       const details = {
         // Remove spaces, numbers, and special characters from tag
-        tag: name.toLowerCase().replace(/\s/g, "").replace(/\d/g, "").replace(/[^a-zA-Z]/g, ""),
+        tag: name
+          .toLowerCase()
+          .replace(/\s/g, "")
+          .replace(/\d/g, "")
+          .replace(/[^a-zA-Z]/g, ""),
         name,
         department,
         gpa,
-      }
+      };
       console.log(details, "details");
       const newComrade = new Comrade(details);
       await newComrade
