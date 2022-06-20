@@ -3,6 +3,7 @@ const Jimp = require("jimp");
 
 const createComradeCertificate = async (name, dept, comradeClass, date) => {
   const certificate = await Jimp.read("./public/fakeCert.png");
+  // const font = await Jimp.loadFont("./public/test.fnt");
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
 
