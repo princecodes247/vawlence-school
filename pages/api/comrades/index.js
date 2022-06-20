@@ -69,6 +69,7 @@ const createComradeCertificate = async (
     972,
     500
   );
+
   certificate.write(`./public/certificates/${tag}.png`);
 
   return certificate;
