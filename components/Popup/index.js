@@ -2,7 +2,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import Link from "next/link"
 import Image from "next/image"
-
+import Failure from "../../public/glasses.jpeg"
+import Success from "../../public/success.webp"
 function Popup(props) {
   let {isOpen, setIsOpen, details} = props
 
@@ -20,7 +21,7 @@ function Popup(props) {
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           Open dialog
         </button>
@@ -41,7 +42,7 @@ function Popup(props) {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="flex items-center justify-center min-h-full p-4 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -51,9 +52,9 @@ function Popup(props) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                   <Image
-                  src={`${details.error ? "/glasses.jpeg": "/success.webp"}`}
+                  src={details.error ? Failure: Success}
                   width={200}
                   height={details.error ? 100 : 200}
                   alt="Comrade"
@@ -66,7 +67,7 @@ function Popup(props) {
                     {details.title}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-md text-gray-500">
+                    <p className="text-gray-500 text-md">
                       {details.message}
                     </p>
                   </div>
@@ -74,7 +75,7 @@ function Popup(props) {
                   <div className="mt-4">
                    {details.error ?  <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-12 sm:px-6 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center px-12 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md sm:px-6 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       {details.buttonText}
@@ -82,7 +83,7 @@ function Popup(props) {
                     <Link href={details.target}>
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-12 sm:px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center px-12 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md sm:px-4 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       {details.buttonText}
