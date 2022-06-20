@@ -27,7 +27,7 @@ const createComradeCertificate = async (name, dept, comradeClass, date) => {
   certificate.print(
     font2,
     0,
-    110,
+    310,
     {
       text: dept,
       alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
@@ -36,8 +36,30 @@ const createComradeCertificate = async (name, dept, comradeClass, date) => {
     972,
     500
   );
-  certificate.print(font2, 430, 180, comradeClass);
-  certificate.print(font2, 430, 210, date);
+  certificate.print(
+    font2,
+    0,
+    510,
+    {
+      text: comradeClass,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
+  certificate.print(
+    font2,
+    0,
+    570,
+    {
+      text: date,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
   certificate.write(`./public/certificates/${nameText}.png`);
 
   return certificate;
