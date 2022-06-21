@@ -8,73 +8,73 @@ const createComradeCertificate = async (
   date,
   tag
 ) => {
-  // const certificate = await Jimp.read("./fakeCert.png");
+  const certificate = await Jimp.read("./fakeCert.png");
   // const font = await Jimp.loadFont("./public/test.fnt");
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
 
-  // const nameText = name
-  //   .split(" ")
-  //   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-  //   .join(" ");
-  // await certificate.scale(1.2);
-  // // certificate.print(font, 430, 110, nameText);
-  // certificate.print(
-  //   font,
-  //   0,
-  //   110,
-  //   {
-  //     text: nameText,
-  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-  //   },
-  //   972,
-  //   500
-  // );
-  // await certificate.scale(1.3);
-  // certificate.print(
-  //   font,
-  //   0,
-  //   230 * 1.3,
-  //   {
-  //     text: dept,
-  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-  //   },
-  //   972 * 1.3,
-  //   500
-  // );
-  // await certificate.scale(0.768);
-  // certificate.print(
-  //   font2,
-  //   0,
-  //   262,
-  //   {
-  //     text: comradeClass,
-  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-  //   },
-  //   972,
-  //   500
-  // );
-  // certificate.print(
-  //   font2,
-  //   0,
-  //   535,
-  //   {
-  //     text: date,
-  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-  //   },
-  //   972,
-  //   500
-  // );
+  const nameText = name
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+  await certificate.scale(1.2);
+  // certificate.print(font, 430, 110, nameText);
+  certificate.print(
+    font,
+    0,
+    110,
+    {
+      text: nameText,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
+  await certificate.scale(1.3);
+  certificate.print(
+    font,
+    0,
+    230 * 1.3,
+    {
+      text: dept,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972 * 1.3,
+    500
+  );
+  await certificate.scale(0.768);
+  certificate.print(
+    font2,
+    0,
+    262,
+    {
+      text: comradeClass,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
+  certificate.print(
+    font2,
+    0,
+    535,
+    {
+      text: date,
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    972,
+    500
+  );
 
   // certificate.write(`./public/certificates/${tag}.png`);
 
-  // return await certificate.getBase64Async(Jimp.MIME_PNG);
+  return await certificate.getBase64Async(Jimp.MIME_PNG);
 
-  return "empty";
+  // return "empty";
 };
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
