@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
@@ -73,8 +74,11 @@ function Comrade() {
     <div className={styles.container}>
       <Layout>
         {isLoading ? (
-          <div className="flex items-center justify-center h-screen">
-            please wait...
+          <div className="flex items-center w-full justify-center h-screen">
+            <div className="flex items-center gap-4">
+              <div className="w-7 h-7 border-t border-black rounded-full animate-spin"></div>
+              <p className="text-xl">Please wait...</p>
+            </div>
           </div>
         ) : (
           <section className="w-full">
@@ -115,7 +119,7 @@ function Comrade() {
                   </a>
                   {/* Share to facebook */}
                   <a
-                    href="https://www.facebook.com/sharer/sharer.php?u=https://comrade.app"
+                    href={`https://www.facebook.com/sharer/sharer.php?u=https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
                     className="px-4 py-2 font-bold text-white bg-blue-700 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
@@ -124,7 +128,7 @@ function Comrade() {
                   </a>
                   {/* Share to twitter */}
                   <a
-                    href="https://twitter.com/intent/tweet?text=I%20just%20got%20a%20certificate%20from%20Comrade%20app%20and%20I%20am%20a%20"
+                    href={`https://twitter.com/intent/tweet?text=I%20just%20got%20a%20certificate%20of%20vawulence%20from%20the%20International%20University%20of%20Vawulence.%20Check%20it%20out%20https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
                     className="px-4 py-2 font-bold text-white bg-blue-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
@@ -133,7 +137,7 @@ function Comrade() {
                   </a>
                   {/* Share to WhatsApp */}
                   <a
-                    href="https://api.whatsapp.com/send?text=I%20just%20got%20a%20certificate%20from%20Comrade%20app%20and%20I%20am%20a%20"
+                    href={`https://api.whatsapp.com/send?text=I%20just%20got%20a%20certificate%20of%20vawulence%20from%20the%20International%20University%20of%20Vawulence.%20Check%20it%20out%20https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
                     className="px-4 py-2 font-bold text-white bg-green-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
@@ -145,7 +149,13 @@ function Comrade() {
             ) : (
               <h2 className="">Comrade not found</h2>
             )}
-            <button>Enroll here</button>
+            <div className="w-full flex items-center justify-center">
+              <Link href="/getCertified">
+                <a className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg">
+                  Enroll here
+                </a>
+              </Link>
+            </div>
           </section>
         )}
       </Layout>
