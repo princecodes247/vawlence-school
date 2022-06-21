@@ -7,6 +7,9 @@ import Footer from "../../components/Footer";
 import Certificate from "../../public/certificate.svg";
 // import { connect } from "../../utils/connection";
 
+const certificateLoader = () => {
+  return ``;
+};
 function Comrade() {
   const [comrade, setComrade] = useState({
     status: "",
@@ -28,7 +31,7 @@ function Comrade() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         if (result) {
           let comradeClass =
             result.gpa >= 4.5
@@ -79,7 +82,7 @@ function Comrade() {
               <div className="flex flex-col items-center">
                 <h1 className="my-8 text-4xl">Congratulations!!</h1>
 
-                <div className="relative flex flex-col items-center pt-2 Certificate">
+                {/* <div className="relative flex flex-col items-center pt-2 Certificate">
                   <Image src={Certificate} alt="certificate" />
                   <h2 className="absolute text-2xl top-24 font-header">
                     {comrade.name}
@@ -90,16 +93,27 @@ function Comrade() {
                   <p className="absolute text-sm text-gray-600 top-56">
                     ({comrade.class})
                   </p>
+                </div> */}
+
+                <div className="flex flex-col items-center relative w-4/5 mb-12">
+                  <Image
+                    src={comrade.certificate}
+                    // layout="fill"
+                    width={1000}
+                    height={600}
+                    alt="certificate"
+                  />
+                  {/* {comrade.certificate} */}
                 </div>
-                <div>
-                  <button className="px-4 py-2 font-bold text-white bg-black rounded-lg">
+                <div className="grid gap-5 grid-cols-2">
+                  <button className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg">
                     Download Certificate
                   </button>
                   {/* Share to facebook */}
                   <a
                     href="https://www.facebook.com/sharer/sharer.php?u=https://comrade.app"
                     target="_blank"
-                    className="px-4 py-2 font-bold text-white bg-black rounded-lg"
+                    className="px-4 py-2 font-bold text-white bg-blue-700 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
                   >
                     Share to Facebook
@@ -108,7 +122,7 @@ function Comrade() {
                   <a
                     href="https://twitter.com/intent/tweet?text=I%20just%20got%20a%20certificate%20from%20Comrade%20app%20and%20I%20am%20a%20"
                     target="_blank"
-                    className="px-4 py-2 font-bold text-white bg-black rounded-lg"
+                    className="px-4 py-2 font-bold text-white bg-blue-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
                   >
                     Share to Twitter
@@ -117,7 +131,7 @@ function Comrade() {
                   <a
                     href="https://api.whatsapp.com/send?text=I%20just%20got%20a%20certificate%20from%20Comrade%20app%20and%20I%20am%20a%20"
                     target="_blank"
-                    className="px-4 py-2 font-bold text-white bg-black rounded-lg"
+                    className="px-4 py-2 font-bold text-white bg-green-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
                   >
                     Share to WhatsApp
