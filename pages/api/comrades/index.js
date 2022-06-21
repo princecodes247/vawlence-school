@@ -112,7 +112,7 @@ const handler = async (req, res) => {
         return;
       }
       const randomCGPA = (upperLimit) => {
-        const cgpas = [4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 1];
+        const cgpas = [4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 1];
         // return a random number between 0 and 5
         const lowerLimit =
           cgpas[Math.floor(Math.random() * (cgpas.length - 1))];
@@ -148,15 +148,18 @@ const handler = async (req, res) => {
           { name: "Marine Vawulence", weight: 1 },
           { name: "Vawutronics", weight: 1 },
         ];
+        const departmentsSize = departments.length - 2;
+        const firstWeight = 15;
+        const secondWeight = 10;
         departments = departments.map((department) => {
-          let size = 50;
           if (department.name === choice) {
-            department.weight = department.weight * 26;
+            department.weight = department.weight * firstWeight;
           }
           if (department.name === secondChoice) {
-            department.weight = department.weight * 13;
+            department.weight = department.weight * secondWeight;
           }
-          department.weight = department.weight / 50;
+          department.weight =
+            department.weight / (departmentsSize + firstWeight + secondWeight);
           return department;
         });
         function weightedRandom(prob) {
@@ -192,11 +195,11 @@ const handler = async (req, res) => {
         details.department,
         details.gpa >= 4.5
           ? "(First-Class)"
-          : result.gpa >= 3.5
+          : details.gpa >= 3.5
           ? "(Second-Class Upper)"
-          : result.gpa >= 2.5
+          : details.gpa >= 2.5
           ? "(Second-Class Lower)"
-          : result.gpa >= 1.5
+          : details.gpa >= 1.5
           ? "(Pass)"
           : "(Peace)",
         "",
