@@ -9,6 +9,7 @@ import Avvvatars from "avvvatars-react";
 import heroImg from "../public/hero.svg";
 import heroImg2 from "../public/hero2.jpeg";
 import { connect } from "../utils/connection";
+import { useEffect } from "react";
 
 function ComradeCard({ comrade }) {
   return (
@@ -33,6 +34,7 @@ function ComradeCard({ comrade }) {
 
 function Home({ comrades }) {
   // console.log(comrades);
+
   return (
     <Layout>
       <section className="relative flex flex-col-reverse items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:flex-row lg:text-left lg:h-screen">

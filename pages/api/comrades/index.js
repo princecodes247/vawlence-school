@@ -115,7 +115,7 @@ const handler = async (req, res) => {
         .replace(/\s/g, "")
         .replace(/\d/g, "")
         .replace(/[^a-zA-Z]/g, "");
-      choice = choice.toLowerCase();
+      // choice = choice.toLowerCase();
       secondChoice = secondChoice.toLowerCase();
 
       const checkComrades = await Comrade.find({ tag });
@@ -180,7 +180,7 @@ const handler = async (req, res) => {
           for (i in prob) {
             sum += prob[i].weight;
             if (r <= sum) return i;
-            return 1;
+            return departments.indexOf(choice);
           }
         }
         const res = weightedRandom(departments);
