@@ -19,9 +19,9 @@ function Comrade() {
   const [isLoading, setIsLoading] = useState(true);
   const [isValidID, setIsValidID] = useState(true);
   useEffect(() => {
-    console.log("Comrade useEffect");
+    // console.log("Comrade useEffect");
     // const { id } = router.query;
-    // console.log(router);
+    // // console.log(router);
     const id = window.location.pathname.split("/")[2];
     fetch("/api/comrades/" + id, {
       method: "GET",
@@ -31,7 +31,7 @@ function Comrade() {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result);
+        // // console.log(result);
         if (result) {
           let comradeClass =
             result.gpa >= 4.5
@@ -64,7 +64,7 @@ function Comrade() {
         return dataUrl;
       })
       .catch(function (error) {
-        console.error("oops, something went wrong!", error);
+        // console.error("oops, something went wrong!", error);
         return null;
       });
   };

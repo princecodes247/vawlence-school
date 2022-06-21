@@ -98,7 +98,7 @@ const handler = async (req, res) => {
       secondChoice = secondChoice.toLowerCase();
 
       const checkComrades = await Comrade.find({ tag });
-      console.log(checkComrades, "checkComrades");
+      // console.log(checkComrades, "checkComrades");
       if (checkComrades && checkComrades.length > 0) {
         res.status(409).json({ error: "Comrade Already Exists" });
         return;
@@ -178,7 +178,7 @@ const handler = async (req, res) => {
         department,
         gpa,
       };
-      console.log(details, "details");
+      // console.log(details, "details");
       const newComrade = new Comrade(details);
       await newComrade
         .save()

@@ -86,11 +86,11 @@ const handler = async (req, res) => {
     // RESPONSE FOR GET REQUESTS
     GET: async (req, res) => {
       const { tag } = req.query;
-      console.log("no na here");
+      // console.log("no na here");
       const { Comrade } = await connect(); // connect to database
       const comrades = await Comrade.find({ tag }) // get all comrades
         .then((comrades) => {
-          // console.log(comrades, "qwert")
+          // // console.log(comrades, "qwert")
           res.json(comrades);
         }) // return comrades
         .catch(catcher); // catch errors
@@ -106,7 +106,7 @@ const handler = async (req, res) => {
       secondChoice = secondChoice.toLowerCase();
 
       const checkComrades = await Comrade.find({ tag });
-      console.log(checkComrades, "checkComrades");
+      // console.log(checkComrades, "checkComrades");
       if (checkComrades && checkComrades.length > 0) {
         res.status(409).json({ error: "Comrade Already Exists" });
         return;
@@ -207,7 +207,7 @@ const handler = async (req, res) => {
       ).then((certificate) => {
         details.certificate = certificate;
       });
-      console.log(details, "details");
+      // // console.log(details, "details");
       const newComrade = new Comrade(details);
       await newComrade
         .save()

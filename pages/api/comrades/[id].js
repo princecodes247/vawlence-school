@@ -1,11 +1,11 @@
-import { connect } from "../../../utils/connection"
+import { connect } from "../../../utils/connection";
 
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
-  const method = req.method
+  const method = req.method;
 
   //function for catch errors
-  const catcher = (error) => res.status(400).json({ error })
+  const catcher = (error) => res.status(400).json({ error });
 
   // GRAB ID FROM req.query (where next stores params)
   const id = req.query.id;
@@ -15,29 +15,30 @@ const handler = async (req, res) => {
     // RESPONSE FOR GET REQUESTS
     GET: async (req, res) => {
       const { id } = req.query;
-      const { Comrade } = await connect() // connect to database
-      console.log("na here", id)
-      res.json(await Comrade.findOne({tag: id}).catch(catcher))
-
+      const { Comrade } = await connect(); // connect to database
+      // console.log("na here", id)
+      res.json(await Comrade.findOne({ tag: id }).catch(catcher));
     },
     // RESPONSE PUT REQUESTS
     PUT: async (req, res) => {
-      const { Comrade } = await connect() // connect to database
+      const { Comrade } = await connect(); // connect to database
       res.json(
-        await Comrade.findByIdAndUpdate(id, req.body, { new: true }).catch(catcher)
-      )
+        await Comrade.findByIdAndUpdate(id, req.body, { new: true }).catch(
+          catcher
+        )
+      );
     },
     // RESPONSE FOR DELETE REQUESTS
     DELETE: async (req, res) => {
-      const { Comrade } = await connect() // connect to database
-      res.json(await Comrade.findByIdAndRemove(id).catch(catcher))
+      const { Comrade } = await connect(); // connect to database
+      res.json(await Comrade.findByIdAndRemove(id).catch(catcher));
     },
-  }
+  };
 
   // Check if there is a response for the particular method, if so invoke it, if not response with an error
-  const response = handleCase[method]
-  if (response) response(req, res)
-  else res.status(400).json({ error: "No Response for This Request" })
-}
+  const response = handleCase[method];
+  if (response) response(req, res);
+  else res.status(400).json({ error: "No Response for This Request" });
+};
 
-export default handler
+export default handler;
