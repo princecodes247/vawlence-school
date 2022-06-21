@@ -8,6 +8,7 @@ const createComradeCertificate = async (
   date,
   tag
 ) => {
+  console.log(__dirname);
   const certificate = await Jimp.read("/certificate.svg");
   // const font = await Jimp.loadFont("./public/test.fnt");
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
