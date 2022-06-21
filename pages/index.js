@@ -86,7 +86,7 @@ function Home({ comrades, count }) {
             <ComradeCard key={comrade._id} comrade={comrade} />
           ))}
         </div>
-        <p className="mb-12">{count} comrades</p>
+        <p className="mb-12">{count} other comrades</p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
             Enroll here
