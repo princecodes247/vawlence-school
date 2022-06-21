@@ -125,7 +125,7 @@ const handler = async (req, res) => {
         return;
       }
       const randomCGPA = (upperLimit) => {
-        const cgpas = [4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 1];
+        const cgpas = [4, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 1];
         // return a random number between 0 and 5
         const lowerLimit =
           cgpas[Math.floor(Math.random() * (cgpas.length - 1))];
