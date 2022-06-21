@@ -10,65 +10,65 @@ const createComradeCertificate = async (
 ) => {
   const certificate = await Jimp.read("./public/fakeCert.png");
   // const font = await Jimp.loadFont("./public/test.fnt");
-  const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-  const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
+  // const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
+  // const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
 
-  const nameText = name
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-  await certificate.scale(1.2);
-  // certificate.print(font, 430, 110, nameText);
-  certificate.print(
-    font,
-    0,
-    110,
-    {
-      text: nameText,
-      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-    },
-    972,
-    500
-  );
-  await certificate.scale(1.3);
-  certificate.print(
-    font,
-    0,
-    230 * 1.3,
-    {
-      text: dept,
-      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-    },
-    972 * 1.3,
-    500
-  );
-  await certificate.scale(0.768);
-  certificate.print(
-    font2,
-    0,
-    262,
-    {
-      text: comradeClass,
-      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-    },
-    972,
-    500
-  );
-  certificate.print(
-    font2,
-    0,
-    535,
-    {
-      text: date,
-      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-      // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-    },
-    972,
-    500
-  );
+  // const nameText = name
+  //   .split(" ")
+  //   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  //   .join(" ");
+  // await certificate.scale(1.2);
+  // // certificate.print(font, 430, 110, nameText);
+  // certificate.print(
+  //   font,
+  //   0,
+  //   110,
+  //   {
+  //     text: nameText,
+  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+  //   },
+  //   972,
+  //   500
+  // );
+  // await certificate.scale(1.3);
+  // certificate.print(
+  //   font,
+  //   0,
+  //   230 * 1.3,
+  //   {
+  //     text: dept,
+  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+  //   },
+  //   972 * 1.3,
+  //   500
+  // );
+  // await certificate.scale(0.768);
+  // certificate.print(
+  //   font2,
+  //   0,
+  //   262,
+  //   {
+  //     text: comradeClass,
+  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+  //   },
+  //   972,
+  //   500
+  // );
+  // certificate.print(
+  //   font2,
+  //   0,
+  //   535,
+  //   {
+  //     text: date,
+  //     alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+  //     // alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+  //   },
+  //   972,
+  //   500
+  // );
 
   // certificate.write(`./public/certificates/${tag}.png`);
 
@@ -190,23 +190,23 @@ const handler = async (req, res) => {
         department,
         gpa,
       };
-      // await createComradeCertificate(
-      //   details.name,
-      //   details.department,
-      //   details.gpa >= 4.5
-      //     ? "(First-Class)"
-      //     : details.gpa >= 3.5
-      //     ? "(Second-Class Upper)"
-      //     : details.gpa >= 2.5
-      //     ? "(Second-Class Lower)"
-      //     : details.gpa >= 1.5
-      //     ? "(Pass)"
-      //     : "(Peace)",
-      //   "",
-      //   details.tag
-      // ).then((certificate) => {
-      //   details.certificate = certificate;
-      // });
+      await createComradeCertificate(
+        details.name,
+        details.department,
+        details.gpa >= 4.5
+          ? "(First-Class)"
+          : details.gpa >= 3.5
+          ? "(Second-Class Upper)"
+          : details.gpa >= 2.5
+          ? "(Second-Class Lower)"
+          : details.gpa >= 1.5
+          ? "(Pass)"
+          : "(Peace)",
+        "",
+        details.tag
+      ).then((certificate) => {
+        details.certificate = certificate;
+      });
       // // console.log(details, "details");
       const newComrade = new Comrade(details);
       await newComrade
