@@ -13,22 +13,26 @@ const Header = () => {
         </div>
       </Link>
 
-      <ul className="hidden md:flex items-center gap-3">
-        <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
-          Home
-        </li>
-        <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
-          My Github
-        </li>
-        <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
+      <div className="flex items-center gap-12">
+        <ul className="hidden md:flex items-center gap-3">
+          <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
+            Home
+          </li>
+          <a href="https://www.github.com/princecodes247">
+            <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
+              My Github
+            </li>
+          </a>
+          {/* <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
           Contact
-        </li>
-      </ul>
-      <Link href="/getCertified">
-        <button className="hidden inline-block p-2 px-6 text-xl text-white rounded md:block bg-primary font-body hover:opacity-80">
-          Get Certified
-        </button>
-      </Link>
+        </li> */}
+        </ul>
+        <Link href="/getCertified">
+          <button className="hidden inline-block p-2 px-6 text-xl text-white rounded md:block bg-primary font-body hover:opacity-80">
+            Get Certified
+          </button>
+        </Link>
+      </div>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="block inline-block p-2 px-6 text-xl text-white md:hidden bg-primary font-body"
