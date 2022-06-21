@@ -18,7 +18,8 @@
     "mongoose": "^6.3.4",
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
