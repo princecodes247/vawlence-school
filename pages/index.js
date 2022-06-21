@@ -32,7 +32,7 @@ function ComradeCard({ comrade }) {
   );
 }
 
-function Home({ comrades }) {
+function Home({ comrades, count }) {
   // console.log(comrades);
 
   return (
@@ -86,7 +86,7 @@ function Home({ comrades }) {
             <ComradeCard key={comrade._id} comrade={comrade} />
           ))}
         </div>
-
+        <p className="mb-12">{count} comrades</p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
             Enroll here
@@ -102,6 +102,7 @@ export async function getStaticProps() {
   const { Comrade } = await connect();
   // // console.log(s)
   let comrades = await Comrade.find()
+    .sort([["date", -1]])
     .limit(20) // get all comrades
     .then((res) => {
       // // console.log(res, "qwert");
@@ -109,11 +110,13 @@ export async function getStaticProps() {
 
       return res.reverse();
     }); // return comrades
+  let count = await Comrade.find().countDocuments();
   // // console.log(comrades, "comrades")
   // .catch((err) => console.log(err)); // catch errors
   return {
     props: {
       comrades: JSON.parse(JSON.stringify(comrades)),
+      count,
     },
     revalidate: 20,
   };
