@@ -125,7 +125,7 @@ const handler = async (req, res) => {
         return;
       }
       const randomCGPA = (upperLimit) => {
-        const cgpas = [4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 1];
+        const cgpas = [4, 4, 3, 3, 3, 3, 2, 2, 2, 1];
         // return a random number between 0 and 5
         const lowerLimit =
           cgpas[Math.floor(Math.random() * (cgpas.length - 1))];
@@ -151,8 +151,6 @@ const handler = async (req, res) => {
           { name: "Advanced Vawulence", weight: 1 },
           { name: "Vawulence Arts", weight: 1 },
           { name: "Medical Vawulence", weight: 1 },
-        ];
-        let moreDepartments = [
           { name: "Vawulence & Law", weight: 1 },
           { name: "Vawulence & Science", weight: 1 },
           { name: "Bio-Vawulence", weight: 1 },

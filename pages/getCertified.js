@@ -29,6 +29,13 @@ const courses = [
   { name: "Advanced Vawulence" },
   { name: "Vawulence Arts" },
   { name: "Medical Vawulence" },
+  { name: "Vawulence & Law" },
+  { name: "Vawulence & Science" },
+  { name: "Bio-Vawulence" },
+  { name: "Geo-Vawulence" },
+  { name: "Enviromental Vawulence" },
+  { name: "Marine Vawulence" },
+  { name: "Vawutronics" },
 ];
 export default function GetCertified() {
   // const [selectedGrades, setSelectedGrades] = useState(grades[0]);
