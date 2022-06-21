@@ -72,7 +72,9 @@ const createComradeCertificate = async (
 
   // certificate.write(`./public/certificates/${tag}.png`);
 
-  return await certificate.getBase64Async(Jimp.MIME_PNG);
+  // return await certificate.getBase64Async(Jimp.MIME_PNG);
+
+  return "empty";
 };
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
