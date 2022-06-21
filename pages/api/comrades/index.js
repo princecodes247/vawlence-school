@@ -180,10 +180,11 @@ const handler = async (req, res) => {
           for (i in prob) {
             sum += prob[i].weight;
             if (r <= sum) return i;
-            return departments.indexOf(choice);
+            return -1;
           }
         }
         const res = weightedRandom(departments);
+        if (res == -1) return choice;
         return departments[res].name;
       };
 
