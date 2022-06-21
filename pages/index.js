@@ -19,7 +19,7 @@ function ComradeCard({ comrade }) {
           <div className="">
             <Avvvatars value={comrade.name} size={50} />
           </div>
-          <div className="flex flex-col ml-4">
+          <div className="flex flex-col flex-1 ml-4">
             <div className="flex items-center justify-between">
               <h3 className="text-xl capitalize">{comrade.name}</h3>
               <p className="text-sm">{comrade.gpa}</p>
