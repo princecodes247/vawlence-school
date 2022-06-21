@@ -110,7 +110,11 @@ const handler = async (req, res) => {
 
       let { tag, name, choice, secondChoice } = req.body;
       name = name.toLowerCase();
-      tag = tag.toLowerCase();
+      tag = name
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .replace(/\d/g, "")
+        .replace(/[^a-zA-Z]/g, "");
       choice = choice.toLowerCase();
       secondChoice = secondChoice.toLowerCase();
 
@@ -190,11 +194,7 @@ const handler = async (req, res) => {
 
       const details = {
         // Remove spaces, numbers, and special characters from tag
-        tag: name
-          .toLowerCase()
-          .replace(/\s/g, "")
-          .replace(/\d/g, "")
-          .replace(/[^a-zA-Z]/g, ""),
+        tag,
         name,
         department,
         gpa,
