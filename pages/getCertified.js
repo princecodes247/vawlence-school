@@ -50,12 +50,12 @@ export default function GetCertified() {
     e.preventDefault();
     // Check if name is empty
     if (name.trim() === "") {
-      // console.log("Name is empty");
+      console.log("Name is empty");
 
       openPopup("Name is empty", "Please enter a valid name", "OK", true);
       return;
     }
-    // console.log(selectedCourse, selectedSecondCourse, name);
+    console.log(selectedCourse, selectedSecondCourse, name);
     fetch("/api/comrades", {
       method: "POST",
       headers: {
@@ -68,10 +68,10 @@ export default function GetCertified() {
         secondChoice: selectedSecondCourse.name,
       }),
     }).then((res) => {
-      // console.log(res);
+      console.log(res);
       if (res.status === 200) {
         res.json().then((data) => {
-          // console.log(data);
+          console.log(data);
           // setComrades(data);
           openPopup(
             "Success",

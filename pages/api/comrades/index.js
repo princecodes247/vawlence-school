@@ -70,7 +70,7 @@ const createComradeCertificate = async (
     500
   );
 
-  certificate.write(`./public/certificates/${tag}.png`);
+  // certificate.write(`./public/certificates/${tag}.png`);
 
   return await certificate.getBase64Async(Jimp.MIME_PNG);
 };
@@ -93,7 +93,7 @@ const handler = async (req, res) => {
           // // console.log(comrades, "qwert")
           res.json(comrades);
         }) // return comrades
-        .catch(catcher); // catch errors
+        .catch(catcher); // catch errorserr
     },
     // RESPONSE POST REQUESTS
     POST: async (req, res) => {
