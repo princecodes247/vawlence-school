@@ -106,9 +106,13 @@ function Comrade() {
                   {/* {comrade.certificate} */}
                 </div>
                 <div className="grid gap-5 grid-cols-2">
-                  <button className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg">
+                  <a
+                    href={comrade.certificate}
+                    download={`comrade_${comrade.tag}.png`}
+                    className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg"
+                  >
                     Download Certificate
-                  </button>
+                  </a>
                   {/* Share to facebook */}
                   <a
                     href="https://www.facebook.com/sharer/sharer.php?u=https://comrade.app"
