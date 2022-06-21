@@ -9,7 +9,9 @@ const createComradeCertificate = async (
   tag
 ) => {
   // console.log(__dirname);
-  const certificate = await Jimp.read("../fakeCert.png");
+  const certificate = await Jimp.read(
+    "https://vawlence-school.vercel.app/fakeCert.png"
+  );
   // const font = await Jimp.loadFont("./public/test.fnt");
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
