@@ -149,7 +149,7 @@ function Comrade() {
             ) : (
               <h2 className="">Comrade not found</h2>
             )}
-            <div className="w-full flex items-center justify-center">
+            <div className="w-full flex items-center justify-center mt-12">
               <Link href="/getCertified">
                 <a className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg">
                   Enroll here
