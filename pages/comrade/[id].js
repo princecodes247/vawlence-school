@@ -113,7 +113,7 @@ function Comrade() {
                   <a
                     href={comrade.certificate}
                     download={`comrade_${comrade.tag}.png`}
-                    className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg"
+                    className="px-4 py-2 font-bold text-white flex items-center justify-center text-center hover:brightness-90 bg-primary rounded-lg"
                   >
                     Download Certificate
                   </a>
@@ -121,7 +121,7 @@ function Comrade() {
                   <a
                     href={`https://www.facebook.com/sharer/sharer.php?u=https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
-                    className="px-4 py-2 font-bold text-white bg-blue-700 text-center hover:brightness-90 rounded-lg"
+                    className="px-4 flex items-center justify-center py-2 font-bold text-white bg-blue-700 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
                   >
                     Share to Facebook
@@ -130,7 +130,7 @@ function Comrade() {
                   <a
                     href={`https://twitter.com/intent/tweet?text=I%20just%20got%20a%20certificate%20of%20vawulence%20from%20the%20International%20University%20of%20Vawulence.%20Check%20it%20out%20https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
-                    className="px-4 py-2 font-bold text-white bg-blue-400 text-center hover:brightness-90 rounded-lg"
+                    className="px-4 flex items-center justify-center py-2 font-bold text-white bg-blue-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
                   >
                     Share to Twitter
@@ -139,7 +139,7 @@ function Comrade() {
                   <a
                     href={`https://api.whatsapp.com/send?text=I%20just%20got%20a%20certificate%20of%20vawulence%20from%20the%20International%20University%20of%20Vawulence.%20Check%20it%20out%20https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
-                    className="px-4 py-2 font-bold text-white bg-green-400 text-center hover:brightness-90 rounded-lg"
+                    className="px-4 flex items-center justify-center py-2 font-bold text-white bg-green-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
                   >
                     Share to WhatsApp

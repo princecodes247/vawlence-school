@@ -101,11 +101,12 @@ export async function getStaticProps() {
   // const res = await axios.get('/api/ip');
   const { Comrade } = await connect();
   // // console.log(s)
-  const comrades = await Comrade.find() // get all comrades
+  let comrades = await Comrade.find() // get all comrades
     .then((res) => {
       // // console.log(res, "qwert");
       // res.json(comrades);
-      return res;
+
+      return res.reverse();
     }); // return comrades
   // // console.log(comrades, "comrades")
   // .catch((err) => console.log(err)); // catch errors
