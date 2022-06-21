@@ -72,7 +72,7 @@ const createComradeCertificate = async (
 
   certificate.write(`./public/certificates/${tag}.png`);
 
-  return certificate;
+  return await certificate.getBase64Async(Jimp.MIME_PNG);
 };
 const handler = async (req, res) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
@@ -175,6 +175,7 @@ const handler = async (req, res) => {
 
       const department = randomDepartment(choice, secondChoice);
       const gpa = randomCGPA(1);
+
       const details = {
         // Remove spaces, numbers, and special characters from tag
         tag: name
@@ -186,26 +187,28 @@ const handler = async (req, res) => {
         department,
         gpa,
       };
+      await createComradeCertificate(
+        details.name,
+        details.department,
+        details.gpa >= 4.5
+          ? "(First-Class)"
+          : result.gpa >= 3.5
+          ? "(Second-Class Upper)"
+          : result.gpa >= 2.5
+          ? "(Second-Class Lower)"
+          : result.gpa >= 1.5
+          ? "(Pass)"
+          : "(Peace)",
+        "",
+        details.tag
+      ).then((certificate) => {
+        details.certificate = certificate;
+      });
       console.log(details, "details");
       const newComrade = new Comrade(details);
       await newComrade
         .save()
-        .then((comrade) => {
-          createComradeCertificate(
-            details.name,
-            details.department,
-            details.gpa >= 4.5
-              ? "(First-Class)"
-              : result.gpa >= 3.5
-              ? "(Second-Class Upper)"
-              : result.gpa >= 2.5
-              ? "(Second-Class Lower)"
-              : result.gpa >= 1.5
-              ? "(Pass)"
-              : "(Peace)",
-            "",
-            details.tag
-          );
+        .then(async (comrade) => {
           res.status(200).json(comrade);
         })
         .catch(catcher);
