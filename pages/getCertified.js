@@ -45,6 +45,7 @@ export default function GetCertified() {
     setSelectedSecondCourse(newList[0]);
   };
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,6 +57,7 @@ export default function GetCertified() {
       return;
     }
     console.log(selectedCourse, selectedSecondCourse, name);
+    setLoading(true);
     fetch("/api/comrades", {
       method: "POST",
       headers: {
@@ -69,6 +71,7 @@ export default function GetCertified() {
       }),
     }).then((res) => {
       console.log(res);
+      setLoading(false);
       if (res.status === 200) {
         res.json().then((data) => {
           console.log(data);
@@ -152,7 +155,14 @@ export default function GetCertified() {
             className="mt-6 p-2 px-4 text-white rounded bg-primary"
             onClick={handleSubmit}
           >
-            Get Certified
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <div className="w-4 h-4 border-t animate-spin duration-75 border-white rounded-full mr-5"></div>
+                Loading...
+              </span>
+            ) : (
+              "Get Certified"
+            )}
           </button>
         </form>
         <Popup
