@@ -97,7 +97,7 @@ function Home({ comrades, count }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // const res = await axios.get('/api/ip');
   const { Comrade } = await connect();
   // // console.log(s)
@@ -118,7 +118,6 @@ export async function getStaticProps() {
       comrades: JSON.parse(JSON.stringify(comrades)),
       count,
     },
-    revalidate: 20,
   };
 }
 
