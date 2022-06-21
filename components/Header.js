@@ -35,9 +35,24 @@ const Header = () => {
       </div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="block inline-block p-2 px-6 text-xl text-white md:hidden bg-primary font-body"
+        className={`block inline-block p-2 px-6 text-xl md:hidden font-body ${
+          !isOpen ? "text-primary" : "text-white bg-primary"
+        }`}
       >
-        .
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
       </button>
       {isOpen ? <NavMenu setIsOpen={setIsOpen} /> : ""}
     </header>
