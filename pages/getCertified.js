@@ -35,6 +35,7 @@ const courses = [
   { name: "Geo-Vawulence" },
   { name: "Enviromental Vawulence" },
   { name: "Marine Vawulence" },
+  { name: "Astrovawulence" },
   { name: "Vawutronics" },
 ];
 export default function GetCertified() {
