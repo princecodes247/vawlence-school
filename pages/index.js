@@ -101,7 +101,8 @@ export async function getStaticProps() {
   // const res = await axios.get('/api/ip');
   const { Comrade } = await connect();
   // // console.log(s)
-  let comrades = await Comrade.find() // get all comrades
+  let comrades = await Comrade.find()
+    .limit(20) // get all comrades
     .then((res) => {
       // // console.log(res, "qwert");
       // res.json(comrades);
