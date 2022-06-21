@@ -13,8 +13,12 @@ const createComradeCertificate = async (
     "https://vawlence-school.vercel.app/fakeCert.png"
   );
   // const font = await Jimp.loadFont("./public/test.fnt");
-  const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-  const font2 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
+  const font = await Jimp.loadFont(
+    "https://vawlence-school.vercel.app/open-sans-32-black/open-sans-32-black.fnt"
+  );
+  const font2 = await Jimp.loadFont(
+    "https://vawlence-school.vercel.app/open-sans-16-black/open-sans-16-black.fnt"
+  );
 
   const nameText = name
     .split(" ")
