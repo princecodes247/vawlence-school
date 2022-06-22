@@ -13,22 +13,24 @@ import { useEffect, useState } from "react";
 
 function ComradeCard({ comrade }) {
   return (
-    <div className="w-full p-4 sm:w-1/2" key={comrade._id}>
-      <div className="flex flex-col p-4 rounded bg-gray-50">
-        <div className="flex flex-row">
-          <div className="">
-            <Avvvatars value={comrade.name} size={50} />
-          </div>
-          <div className="flex flex-col flex-1 ml-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl capitalize">{comrade.name}</h3>
-              <p className="text-sm">{comrade.gpa}</p>
+    <Link href={`/comrade/${comrade.tag}`}>
+      <div className="w-full p-4 sm:w-1/2 cursor-pointer" key={comrade._id}>
+        <div className="flex flex-col p-4 rounded bg-gray-50">
+          <div className="flex flex-row">
+            <div className="">
+              <Avvvatars value={comrade.name} size={50} />
             </div>
-            <p className="text-sm italic">{comrade.department}</p>
+            <div className="flex flex-col flex-1 ml-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl capitalize">{comrade.name}</h3>
+                <p className="text-sm">{comrade.gpa}</p>
+              </div>
+              <p className="text-sm italic">{comrade.department}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
