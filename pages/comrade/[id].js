@@ -137,7 +137,7 @@ function Comrade() {
                   </a>
                   {/* Share to twitter */}
                   <a
-                    href={`https://twitter.com/intent/tweet?text=I%20just%20got%20a%20certificate%20of%20vawulence%20from%20the%20International%20University%20of%20Vawulence.%20Check%20it%20out%20https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
+                    href={`https://twitter.com/intent/tweet?text=I%20just%20got%20a%20certificate%20of%20vawulence%20from%20the%20International%20University%20of%20Vawulence.%20#certified%20#certifiedcomrade#%20#vawulenceCheck%20it%20out%20https://vawlence-school.vercel.app/comrade/${comrade.tag}`}
                     target="_blank"
                     className="px-4 gap-6 flex items-center justify-start text-center py-2 font-bold text-white bg-blue-400 text-center hover:brightness-90 rounded-lg"
                     rel="noreferrer"
