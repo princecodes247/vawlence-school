@@ -14,7 +14,7 @@ const Header = () => {
       </Link>
 
       <div className="flex items-center gap-12">
-        <ul className="hidden md:flex items-center gap-3">
+        <ul className="hidden md:flex items-center gap-12">
           <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
             Home
           </li>
@@ -23,9 +23,11 @@ const Header = () => {
               My Github
             </li>
           </a>
-          {/* <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
-          Contact
-        </li> */}
+          <a href="https://api.whatsapp.com/send?phone=2349011308292&text=Hi!!!%20I%27m">
+            <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
+              Say hi!
+            </li>
+          </a>
         </ul>
         <Link href="/getCertified">
           <button className="hidden inline-block p-2 px-6 text-xl text-white rounded md:block bg-primary font-body hover:opacity-80">

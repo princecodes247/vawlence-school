@@ -29,7 +29,11 @@ const NavMenu = (props) => (
         <p className="font-bold text-gray-800 hover:text-gray-500">My Github</p>
       </div>
     </a>
-
+    <a href="https://api.whatsapp.com/send?phone=2349011308292&text=Hi!!!%20I%27m">
+      <div className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
+        Say hi!
+      </div>
+    </a>
     <Link href="/getCertified">
       <button
         onClick={() => props.setIsOpen(false)}
