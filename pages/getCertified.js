@@ -101,7 +101,7 @@ export default function GetCertified() {
         // setComrades(data);
         openPopup(
           "Ah ah...",
-          name + ", You have already graduated! (Name taken)",
+          name + ", You have already graduated!",
           "Nawa...",
           true
         );
