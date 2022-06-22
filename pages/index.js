@@ -108,7 +108,7 @@ function Home() {
           </div>
         )}
         <p className="mb-12">
-          And {count == 0 ? 0 : 11522 + count} other comrades
+          And {count == 0 ? 0 : 17453 + count} other comrades
         </p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
