@@ -11,6 +11,11 @@ const variants = {
 
 const Layout = ({ children, title, description }) => (
   <div>
+    <Script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9274160991328583"
+      crossorigin="anonymous"
+    />
     {/* <NextSeo title={title} description={description} openGraph={{ title, description }} /> */}
     <motion.main
       initial="hidden"
@@ -25,11 +30,6 @@ const Layout = ({ children, title, description }) => (
     >
       {children}
     </motion.main>
-    <Script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9274160991328583"
-      crossorigin="anonymous"
-    />
   </div>
 );
 
