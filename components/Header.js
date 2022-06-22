@@ -23,7 +23,7 @@ const Header = () => {
               My Github
             </li>
           </a>
-          <a href="https://chat.whatsapp.com/IGnZwQ1jIcy6G2TeJGzQS3">
+          <a href="https://chat.whatsapp.com/Bifc4xrNAAh0TDZp57MTVH">
             <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
               Join Group
             </li>
