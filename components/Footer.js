@@ -8,14 +8,19 @@ const Footer = () => (
     >
       Created by PrinceCodes
     </a>
-    <a
+    <a href="https://api.whatsapp.com/send?phone=2349011308292&text=Hi!!!%20I%27m">
+      <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
+        Say hi!
+      </div>
+    </a>
+    {/* <a
       href="https://princecodes-2022.vercel.app"
       target="_blank"
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
     >
       Portfolio (under Construction)
-    </a>
+    </a> */}
   </footer>
 );
 
