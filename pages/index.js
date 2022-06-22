@@ -50,6 +50,7 @@ function Home() {
         setLoading(false);
       });
   }, []);
+  const totalCount=new Intl.NumberFormat('en-US').format( count == 0 ? 0 : 11522 + count);
   return (
     <Layout>
       <section className="relative flex flex-col-reverse items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:flex-row lg:text-left lg:h-screen">
@@ -108,7 +109,7 @@ function Home() {
           </div>
         )}
         <p className="mb-12">
-          And {count == 0 ? 0 : 11522 + count} other comrades
+          And {totalCount} other comrades
         </p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
