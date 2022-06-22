@@ -25,7 +25,7 @@ const Header = () => {
           </a>
           <a href="https://chat.whatsapp.com/DGSv2nNKZUiIszmr1RYklf">
             <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
-              Join the Vawulence Nation
+              Join Group
             </li>
           </a>
         </ul>
