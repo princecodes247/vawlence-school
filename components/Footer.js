@@ -10,7 +10,7 @@ const Footer = () => (
     </a>
 
     <a
-      href="https://chat.whatsapp.com/DGSv2nNKZUiIszmr1RYklf"
+      href="https://chat.whatsapp.com/IGnZwQ1jIcy6G2TeJGzQS3"
       target="_blank"
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
