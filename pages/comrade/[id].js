@@ -46,7 +46,13 @@ function Comrade() {
               ? "Pass"
               : "Peace";
 
-          setComrade({ ...result, class: comradeClass });
+          setComrade({
+            ...result.comrade,
+            class: comradeClass,
+            certificate: result.certificate,
+          });
+          // console.log(result);
+          // setComrade({ class: comradeClass, certificate: result.certificate });
           setIsValidID(true);
         } else {
           // return router.push("/"+id);
