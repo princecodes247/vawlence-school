@@ -22,6 +22,11 @@ const Footer = () => (
         Say hi!
       </div>
     </a>
+    <a href="https://instagram.com/astrosoft.io?igshid=YmMyMTA2M2Y=">
+      <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
+        Check out AstroSoft
+      </div>
+    </a>
   </footer>
 );
 
