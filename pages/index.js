@@ -107,7 +107,7 @@ function Home() {
             ))}
           </div>
         )}
-        <p className="mb-12">And {count} other comrades</p>
+        <p className="mb-12">And {2123 + count} other comrades</p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
             Enroll here
