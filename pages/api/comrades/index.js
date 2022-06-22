@@ -94,15 +94,20 @@ const handler = async (req, res) => {
   const handleCase = {
     // RESPONSE FOR GET REQUESTS
     GET: async (req, res) => {
-      const { tag } = req.query;
+      // return res.status(200).json("comrades");
       // console.log("no na here");
       const { Comrade } = await connect(); // connect to database
-      const comrades = await Comrade.find({ tag }) // get all comrades
-        .then((comrades) => {
-          // // console.log(comrades, "qwert")
-          res.json(comrades);
+      Promise.all([
+        Comrade.find({}, { certificate: 0 })
+          .sort([["date", -1]])
+          .limit(20),
+        Comrade.countDocuments(),
+      ])
+        .then((result) => {
+          console.log(result[1]);
+          return res.status(200).json(result);
         }) // return comrades
-        .catch(catcher); // catch errorserr
+        .catch(catcher); // catch errorserrx
     },
     // RESPONSE POST REQUESTS
     POST: async (req, res) => {
@@ -231,7 +236,7 @@ const handler = async (req, res) => {
 
   // Check if there is a response for the particular method, if so invoke it, if not response with an error
   const response = handleCase[method];
-  if (response) response(req, res);
+  if (response) await response(req, res);
   else res.status(400).json({ error: "No Response for This Request" });
 };
 

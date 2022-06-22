@@ -9,7 +9,7 @@ import Avvvatars from "avvvatars-react";
 import heroImg from "../public/hero.svg";
 import heroImg2 from "../public/hero2.jpeg";
 import { connect } from "../utils/connection";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function ComradeCard({ comrade }) {
   return (
@@ -32,9 +32,22 @@ function ComradeCard({ comrade }) {
   );
 }
 
-function Home({ comrades, count }) {
-  // console.log(comrades);
+function Home() {
+  const [comrades, setComrades] = useState([]);
+  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
+  // console.log(comrades);
+  useEffect(() => {
+    fetch("/api/comrades")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setComrades(res[0]);
+        setCount(res[1]);
+        setLoading(false);
+      });
+  }, []);
   return (
     <Layout>
       <section className="relative flex flex-col-reverse items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:flex-row lg:text-left lg:h-screen">
@@ -81,11 +94,17 @@ function Home({ comrades, count }) {
         <h2 className="text-2xl font-bold text-center">
           Current Holders of Vawulence
         </h2>
-        <div className="flex flex-col items-center w-full mb-8 sm:w-3/4 sm:flex-row-reverse sm:flex-wrap">
-          {comrades.map((comrade) => (
-            <ComradeCard key={comrade._id} comrade={comrade} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center my-12 ">
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center w-full mb-8 sm:w-3/4 sm:flex-row-reverse sm:flex-wrap">
+            {comrades.map((comrade) => (
+              <ComradeCard key={comrade._id} comrade={comrade} />
+            ))}
+          </div>
+        )}
         <p className="mb-12">And {count} other comrades</p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
@@ -97,30 +116,30 @@ function Home({ comrades, count }) {
   );
 }
 
-export async function getStaticProps() {
-  // const res = await axios.get('/api/ip');
-  const { Comrade } = await connect();
-  // // console.log(s)
-  let comrades = await Comrade.find()
-    .sort([["date", -1]])
-    .limit(20) // get all comrades
-    .then((res) => {
-      // // console.log(res, "qwert");
-      // res.json(comrades);
+// export async function getStaticProps() {
+//   // const res = await axios.get('/api/ip');
+//   const { Comrade } = await connect();
+//   // // console.log(s)
+//   let comrades = await Comrade.find()
+//     .sort([["date", -1]])
+//     .limit(20) // get all comrades
+//     .then((res) => {
+//       // // console.log(res, "qwert");
+//       // res.json(comrades);
 
-      return res.reverse();
-    }); // return comrades
-  let count = await Comrade.find().countDocuments();
-  // // console.log(comrades, "comrades")
-  // .catch((err) => console.log(err)); // catch errors
-  return {
-    props: {
-      comrades: JSON.parse(JSON.stringify(comrades)),
-      count,
-    },
-    revalidate: 20,
-  };
-}
+//       return res.reverse();
+//     }); // return comrades
+//   let count = await Comrade.find().countDocuments();
+//   // // console.log(comrades, "comrades")
+//   // .catch((err) => console.log(err)); // catch errors
+//   return {
+//     props: {
+//       comrades: JSON.parse(JSON.stringify(comrades)),
+//       count,
+//     },
+//     revalidate: 20,
+//   };
+// }
 
 // TODO: Create basic styling
 // TODO: Fetch graduates from API
