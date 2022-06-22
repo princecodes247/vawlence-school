@@ -108,7 +108,7 @@ function Comrade() {
                     height={600}
                     alt="certificate"
                   />
-                  {/* {comrade.certificate} */}
+                  <p className="my-5 font-bold">Your CGPA: {comrade.gpa}</p>
                 </div>
                 <div className="grid gap-5 grid-cols-2">
                   <a
