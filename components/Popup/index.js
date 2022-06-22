@@ -1,18 +1,18 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import Link from "next/link"
-import Image from "next/image"
-import Failure from "../../public/glasses.jpeg"
-import Success from "../../public/success.webp"
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Failure from "../../public/glasses.jpeg";
+import Success from "../../public/success.webp";
 function Popup(props) {
-  let {isOpen, setIsOpen, details} = props
+  let { isOpen, setIsOpen, details } = props;
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
 
   return (
@@ -54,10 +54,10 @@ function Popup(props) {
               >
                 <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                   <Image
-                  src={details.error ? Failure: Success}
-                  width={200}
-                  height={details.error ? 100 : 200}
-                  alt="Comrade"
+                    src={details.error ? Failure : Success}
+                    width={200}
+                    height={details.error ? 100 : 200}
+                    alt="Comrade"
                   />
 
                   <Dialog.Title
@@ -67,29 +67,29 @@ function Popup(props) {
                     {details.title}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-gray-500 text-md">
-                      {details.message}
-                    </p>
+                    <p className="text-gray-500 text-md">{details.message}</p>
                   </div>
 
                   <div className="mt-4">
-                   {details.error ?  <button
-                      type="button"
-                      className="inline-flex justify-center px-12 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md sm:px-6 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      {details.buttonText}
-                    </button> :  
-                    <Link href={details.target}>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center px-12 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md sm:px-4 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      {details.buttonText}
-                    </button>
-                    </Link>
-                    }
+                    {details.error ? (
+                      <button
+                        type="button"
+                        className="inline-flex justify-center px-12 py-2 text-sm font-medium text-red-900 bg-red-100 border border-transparent rounded-md sm:px-6 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        {details.buttonText}
+                      </button>
+                    ) : (
+                      <Link href={details.target}>
+                        <button
+                          type="button"
+                          className="inline-flex justify-center px-12 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md sm:px-4 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                          onClick={closeModal}
+                        >
+                          {details.buttonText}
+                        </button>
+                      </Link>
+                    )}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -98,7 +98,7 @@ function Popup(props) {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }
 
 export default Popup;
