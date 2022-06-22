@@ -13,7 +13,13 @@ function NotFound() {
   return (
     <Layout>
       <section className="relative flex flex-col items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:h-screen">
-        <Image src={NotFoundImg} alt="404" className="rounded-3xl" />
+        <Image
+          src={NotFoundImg}
+          alt="404"
+          width={300}
+          height={300}
+          className="rounded-xl border border-primary"
+        />
         <p className="text-3xl font-bold">Where you dey go comrade?</p>
 
         <Link href="/">
