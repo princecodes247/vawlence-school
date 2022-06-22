@@ -87,7 +87,7 @@ export default function GetCertified() {
           // setComrades(data);
           openPopup(
             "Success",
-            "You have graduated COMRADE! (Name taken)",
+            "You have graduated COMRADE!",
             "Zazu!",
             false,
             "/comrade/" + data.tag
@@ -101,7 +101,7 @@ export default function GetCertified() {
         // setComrades(data);
         openPopup(
           "Ah ah...",
-          name + ", You have already graduated!",
+          name + ", You have already graduated! (Name taken)",
           "Nawa...",
           true
         );
