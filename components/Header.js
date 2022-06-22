@@ -23,9 +23,9 @@ const Header = () => {
               My Github
             </li>
           </a>
-          <a href="https://api.whatsapp.com/send?phone=2349011308292&text=Hi!!!%20I%27m">
+          <a href="https://chat.whatsapp.com/DGSv2nNKZUiIszmr1RYklf">
             <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
-              Say hi!
+              Join the Vawulence Nation
             </li>
           </a>
         </ul>

@@ -13,14 +13,14 @@ const Footer = () => (
         Say hi!
       </div>
     </a>
-    {/* <a
-      href="https://princecodes-2022.vercel.app"
+    <a
+      href="https://chat.whatsapp.com/DGSv2nNKZUiIszmr1RYklf"
       target="_blank"
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
     >
-      Portfolio (under Construction)
-    </a> */}
+      Join the Vawulence Nation
+    </a>
   </footer>
 );
 
