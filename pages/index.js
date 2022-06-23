@@ -14,13 +14,13 @@ import { useEffect, useState } from "react";
 function ComradeCard({ comrade }) {
   return (
     <Link href={`/comrade/${comrade.tag}`}>
-      <div className="w-full p-4 h-full cursor-pointer" key={comrade._id}>
-        <div className="flex h-full items-center justify-between p-4 rounded bg-gray-50">
-          <div className="flex flex-row  flex-1">
+      <div className="w-full p-4 sm:w-1/2 cursor-pointer" key={comrade._id}>
+        <div className="flex flex-col p-4 rounded bg-gray-50">
+          <div className="flex flex-row">
             <div className="">
               <Avvvatars value={comrade.name} size={50} />
             </div>
-            <div className="flex flex-col flex-1 w-full ml-4">
+            <div className="flex flex-col flex-1 ml-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl capitalize">{comrade.name}</h3>
                 <p className="text-sm">{comrade.gpa}</p>
@@ -50,11 +50,11 @@ function Home() {
         setLoading(false);
       });
   }, []);
+  const totalCount = new Intl.NumberFormat("en-US").format(
+    count == 0 ? 0 : 11522 + count
+  );
   return (
-    <Layout
-      title="Vawulence School"
-      description="Get certified in a field of vawulence today"
-    >
+    <Layout>
       <section className="relative flex flex-col-reverse items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:flex-row lg:text-left lg:h-screen">
         <div className="relative z-10 flex flex-col items-center gap-6 px-12 lg:p-32 lg:px-24 lg:items-start">
           <h1 className="text-5xl font-bold lg:text-7xl font-header">
@@ -104,15 +104,13 @@ function Home() {
             <p>Loading...</p>
           </div>
         ) : (
-          <div className="flex flex-col items-stretch w-full mb-8 md:w-4/5 sm:grid sm:grid-cols-2">
+          <div className="flex flex-col items-center w-full mb-8 sm:w-3/4 sm:flex-row-reverse sm:flex-wrap">
             {comrades.map((comrade) => (
               <ComradeCard key={comrade._id} comrade={comrade} />
             ))}
           </div>
         )}
-        <p className="mb-12">
-          And {count == 0 ? 0 : 24178 + count} other comrades
-        </p>
+        <p className="mb-12">And {totalCount} other comrades</p>
         <Link href="/getCertified">
           <button className="inline-block p-2 px-6 text-xl text-white rounded bg-primary font-body hover:opacity-80">
             Enroll here
