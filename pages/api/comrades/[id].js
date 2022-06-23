@@ -102,26 +102,27 @@ const handler = async (req, res) => {
       // console.log("na here", id)
       await Comrade.findOne({ tag: id })
         .then(async (comrade) => {
+          res.json(comrade);
           // console.log("comrade", comrade);
-          let certificate = await createComradeCertificate(
-            comrade.name,
-            comrade.department,
-            comrade.gpa >= 4.5
-              ? "(First-Class)"
-              : comrade.gpa >= 3.5
-              ? "(Second-Class Upper)"
-              : comrade.gpa >= 2.5
-              ? "(Second-Class Lower)"
-              : comrade.gpa >= 1.5
-              ? "(Pass)"
-              : "(Peace)",
-            "",
-            comrade.tag
-          ).then(async (cert) => {
-            // console.log("comrade", comrade.comradeClass);
-            res.json({ comrade, certificate: cert });
-            // return cert;
-          });
+          // let certificate = await createComradeCertificate(
+          //   comrade.name,
+          //   comrade.department,
+          //   comrade.gpa >= 4.5
+          //     ? "(First-Class)"
+          //     : comrade.gpa >= 3.5
+          //     ? "(Second-Class Upper)"
+          //     : comrade.gpa >= 2.5
+          //     ? "(Second-Class Lower)"
+          //     : comrade.gpa >= 1.5
+          //     ? "(Pass)"
+          //     : "(Peace)",
+          //   "",
+          //   comrade.tag
+          // ).then(async (cert) => {
+          //   // console.log("comrade", comrade.comradeClass);
+          //   res.json({ comrade, certificate: cert });
+          //   // return cert;
+          // });
         })
         .catch(catcher);
     },

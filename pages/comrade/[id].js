@@ -33,7 +33,7 @@ function Comrade() {
     })
       .then((res) => res.json())
       .then((result) => {
-        // // console.log(result);
+        console.log(result);
         if (result) {
           let comradeClass =
             result.gpa >= 4.5
@@ -46,19 +46,37 @@ function Comrade() {
               ? "Pass"
               : "Peace";
 
-          setComrade({
-            ...result.comrade,
-            class: comradeClass,
-            certificate: result.certificate,
-          });
-          // console.log(result);
-          // setComrade({ class: comradeClass, certificate: result.certificate });
-          setIsValidID(true);
+          fetch(`https://vawulence-image-gen.herokuapp.com/`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: result.name,
+              department: result.department,
+              comradeClass: comradeClass,
+              tag: result.tag,
+            }),
+          })
+            .then((res) => res.json())
+            .then((imgRes) => {
+              console.log(imgRes);
+              setComrade({
+                ...result.comrade,
+                class: comradeClass,
+                certificate: imgRes.certificate,
+              });
+              // console.log(result);
+              // setComrade({ class: comradeClass, certificate: result.certificate });
+              setIsValidID(true);
+              setIsLoading(false);
+            });
         } else {
           // return router.push("/"+id);
           setIsValidID(false);
+          setIsLoading(false);
         }
-        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
