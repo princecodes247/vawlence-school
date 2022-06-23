@@ -14,7 +14,7 @@ const Footer = () => (
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
     >
-      Follow The Vawulent Programmer
+      Follow On Twitter
     </a>
 
     <a
