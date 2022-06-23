@@ -17,6 +17,15 @@ const Footer = () => (
       Follow On Twitter
     </a>
     <a
+      href="https://instagram.com/vawulenceschool?r=nametag"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-primary underline underline-primary"
+    >
+      Follow On Instagram
+    </a>
+    https://instagram.com/vawulenceschool?r=nametag
+    <a
       href="https://www.twitter.com/princecodes247"
       target="_blank"
       rel="noopener noreferrer"
@@ -34,7 +43,6 @@ const Footer = () => (
         Join the Discord
       </div>
     </a>
-
     <a
       href="https://chat.whatsapp.com/FPffeFMnOCeLpW0ZRswQx1"
       target="_blank"
