@@ -225,23 +225,7 @@ const handler = async (req, res) => {
         return;
       }
       comrade.gpa = cgpa;
-      await createComradeCertificate(
-        comrade.name,
-        comrade.department,
-        comrade.gpa >= 4.5
-          ? "(First-Class)"
-          : comrade.gpa >= 3.5
-          ? "(Second-Class Upper)"
-          : comrade.gpa >= 2.5
-          ? "(Second-Class Lower)"
-          : comrade.gpa >= 1.5
-          ? "(Pass)"
-          : "(Peace)",
-        "",
-        comrade.tag
-      ).then((certificate) => {
-        comrade.certificate = certificate;
-      });
+
       await comrade.save().then(async (comrade) => {
         res.status(200).json(comrade);
       });
