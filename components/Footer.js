@@ -28,7 +28,7 @@ const Footer = () => (
     </a>
 
     <a
-      href="https://chat.whatsapp.com/HhT3idNKVGe48rc1DFbtDS"
+      href="https://chat.whatsapp.com/CaU3VvtgqE50HzrCHNuCRq"
       target="_blank"
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
@@ -45,11 +45,11 @@ const Footer = () => (
         Check out AstroSoft
       </div>
     </a>
-    <a href="https://www.buymeacoffee.com/princecodes">
+    {/* <a href="https://www.buymeacoffee.com/princecodes">
       <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
-        Support Vawulence
+        Support VawulenceFest 2022
       </div>
-    </a>
+    </a> */}
   </footer>
 );
 
