@@ -15,7 +15,7 @@ function ComradeCard({ comrade }) {
   return (
     <Link href={`/comrade/${comrade.tag}`}>
       <div className="w-full p-4 sm:w-1/2 cursor-pointer" key={comrade._id}>
-        <div className="flex flex-col p-4 rounded bg-gray-50">
+        <div className="flex flex-col h-full items-center p-4 rounded bg-gray-50">
           <div className="flex flex-row">
             <div className="">
               <Avvvatars value={comrade.name} size={50} />
