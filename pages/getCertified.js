@@ -134,7 +134,7 @@ export default function GetCertified() {
       </h2>
       <section className="w-full flex item-center justify-center h-full pt-8 sm:pt-16">
         <form className="sm:w-2/5 sm:border sm:border-gray-300 rounded p-8 flex flex-col gap-2">
-          <label className="">
+          <div>
             <p className="text-gray-600 text-sm">Your name</p>
             <input
               value={name}
@@ -142,16 +142,16 @@ export default function GetCertified() {
               placeholder="Emeka Billions"
               className="border border-gray-200 p-2 w-full rounded"
             />
-          </label>
-          <label className="">
+          </div>
+          <div className="p-2">
             <p className="text-gray-600 text-sm">First choice of Study</p>
             <Select
               list={courses}
               selected={selectedCourse}
               setSelected={handleSetFirstChoice}
             />
-          </label>
-          <label className="">
+          </div>
+          <div className="p-2">
             <p className="text-gray-600 text-sm">Second choice of Study</p>
             <Select
               list={secondCourses}
@@ -159,7 +159,7 @@ export default function GetCertified() {
               setSelected={setSelectedSecondCourse}
             />
             {/* <Select list={secondCourses} selected={selectedSecondCourse} setSelected={setSecondCourses} /> */}
-          </label>
+          </div>
           <button
             className="mt-6 p-2 px-4 text-white rounded bg-primary"
             onClick={handleSubmit}
