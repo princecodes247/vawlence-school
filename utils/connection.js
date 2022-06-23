@@ -3,8 +3,8 @@ import mongoose, { Model } from "mongoose";
 // const shortid = require("shortid");
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env)
-// const DATABASE_URL = process.env.DATABASE_URL;
-const DATABASE_URL = `mongodb://127.0.0.1:27017/vawlence`;
+const DATABASE_URL = process.env.DATABASE_URL;
+// const DATABASE_URL = `mongodb://127.0.0.1:27017/vawlence`;
 
 // connection function
 export const connect = async () => {
