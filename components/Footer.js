@@ -16,6 +16,14 @@ const Footer = () => (
     >
       Follow On Twitter
     </a>
+    <a
+      href="https://www.twitter.com/princecodes247"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-primary underline underline-primary"
+    >
+      Follow UI the Second
+    </a>
     <a href="https://t.me/+gQwhkcPm2xQ5MzY0">
       <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
         Join the telegram
@@ -28,7 +36,7 @@ const Footer = () => (
     </a>
 
     <a
-      href="https://chat.whatsapp.com/CaU3VvtgqE50HzrCHNuCRq"
+      href="https://chat.whatsapp.com/FPffeFMnOCeLpW0ZRswQx1"
       target="_blank"
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
@@ -45,11 +53,11 @@ const Footer = () => (
         Check out AstroSoft
       </div>
     </a>
-    {/* <a href="https://www.buymeacoffee.com/princecodes">
+    <a href="https://www.buymeacoffee.com/princecodes">
       <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
         Support VawulenceFest 2022
       </div>
-    </a> */}
+    </a>
   </footer>
 );
 
