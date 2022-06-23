@@ -24,7 +24,6 @@ const Footer = () => (
     >
       Follow On Instagram
     </a>
-    https://instagram.com/vawulenceschool?r=nametag
     <a
       href="https://www.twitter.com/princecodes247"
       target="_blank"
