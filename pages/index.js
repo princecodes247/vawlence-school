@@ -51,7 +51,7 @@ function Home() {
       });
   }, []);
   const totalCount = new Intl.NumberFormat("en-US").format(
-    count == 0 ? 0 : 11522 + count
+    count == 0 ? 0 : 24178 + count
   );
   return (
     <Layout>
