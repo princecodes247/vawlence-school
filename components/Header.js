@@ -15,9 +15,11 @@ const Header = () => {
 
       <div className="flex items-center gap-12">
         <ul className="hidden md:flex items-center gap-12">
-          <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
-            Home
-          </li>
+          <Link href="/">
+            <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
+              Home
+            </li>
+          </Link>
           <a href="https://www.github.com/princecodes247">
             <li className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
               My Github
