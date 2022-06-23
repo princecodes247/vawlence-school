@@ -1,5 +1,5 @@
 const Footer = () => (
-  <footer className="flex flex-col items-center gap-4 p-4 text-center pt-12 bg-gray-100">
+  <footer className="flex flex-col items-center md:grid md:grid-cols-2 gap-4 p-4 text-center pt-12 bg-gray-100">
     <a
       href="https://www.github.com/princecodes247"
       target="_blank"
