@@ -16,6 +16,11 @@ const Footer = () => (
     >
       Follow On Twitter
     </a>
+    <a href="https://t.me/+gQwhkcPm2xQ5MzY0">
+      <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
+        Join the telegram
+      </div>
+    </a>
 
     <a
       href="https://chat.whatsapp.com/HhT3idNKVGe48rc1DFbtDS"
