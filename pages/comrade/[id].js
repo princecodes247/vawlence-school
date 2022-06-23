@@ -13,11 +13,7 @@ const certificateLoader = () => {
   return ``;
 };
 function Comrade() {
-  const [comrade, setComrade] = useState({
-    status: "",
-    from: "",
-    to: "",
-  });
+  const [comrade, setComrade] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isValidID, setIsValidID] = useState(true);
   useEffect(() => {
@@ -25,6 +21,7 @@ function Comrade() {
     // const { id } = router.query;
     // // console.log(router);
     const id = window.location.pathname.split("/")[2];
+    let comradeRes = {};
     fetch("/api/comrades/" + id, {
       method: "GET",
       headers: {
@@ -45,7 +42,12 @@ function Comrade() {
               : result.gpa >= 1.5
               ? "Pass"
               : "Peace";
-
+          // console.log("comradeClass", result);
+          comradeRes = {
+            ...result,
+            class: comradeClass,
+            // certificate: imgRes.certificate,
+          };
           fetch(`https://vawulence-image-gen.herokuapp.com/`, {
             method: "POST",
             mode: "cors",
@@ -55,19 +57,18 @@ function Comrade() {
             body: JSON.stringify({
               name: result.name,
               department: result.department,
-              comradeClass: comradeClass,
+              gpa: result.gpa,
               tag: result.tag,
             }),
           })
             .then((res) => res.json())
             .then((imgRes) => {
-              console.log(imgRes);
+              // console.log(imgRes);
               setComrade({
-                ...result.comrade,
-                class: comradeClass,
+                ...comradeRes,
                 certificate: imgRes.certificate,
               });
-              // console.log(result);
+              // console.log("see", comradeRes);
               // setComrade({ class: comradeClass, certificate: result.certificate });
               setIsValidID(true);
               setIsLoading(false);
