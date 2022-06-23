@@ -29,7 +29,7 @@ const NavMenu = (props) => (
         <p className="font-bold text-gray-800 hover:text-gray-500">My Github</p>
       </div>
     </a>
-    <a href="https://chat.whatsapp.com/Bifc4xrNAAh0TDZp57MTVH">
+    <a href="https://chat.whatsapp.com/Kb1CMdn2Ne07XBW6x4etq6">
       <div className="font-bold text-gray-800 hover:text-gray-500 cursor-pointer">
         Join the Vawulence Nation
       </div>
