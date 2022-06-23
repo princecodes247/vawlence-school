@@ -8,6 +8,14 @@ const Footer = () => (
     >
       Created by PrinceCodes
     </a>
+    <a
+      href="https://www.twitter.com/princecodes247"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-primary underline underline-primary"
+    >
+      Follow The Vawulent Programmer
+    </a>
 
     <a
       href="https://chat.whatsapp.com/Kb1CMdn2Ne07XBW6x4etq6"
