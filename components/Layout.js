@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-// import { NextSeo } from 'next-seo'
+import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 import Script from "next/script";
 
@@ -16,7 +16,7 @@ const Layout = ({ children, title, description }) => (
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9274160991328583"
       crossorigin="anonymous"
     />
-    {/* <NextSeo title={title} description={description} openGraph={{ title, description }} /> */}
+    <NextSeo title={title} description={description} openGraph={{ title, description }} />
     <motion.main
       initial="hidden"
       animate="enter"
