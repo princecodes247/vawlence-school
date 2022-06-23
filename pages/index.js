@@ -14,13 +14,13 @@ import { useEffect, useState } from "react";
 function ComradeCard({ comrade }) {
   return (
     <Link href={`/comrade/${comrade.tag}`}>
-      <div className="w-full p-4 sm:w-1/2 cursor-pointer" key={comrade._id}>
-        <div className="flex flex-col h-full items-center p-4 rounded bg-gray-50">
-          <div className="flex flex-row">
+      <div className="w-full p-4 h-full cursor-pointer" key={comrade._id}>
+        <div className="flex h-full items-center justify-between p-4 rounded bg-gray-50">
+          <div className="flex flex-row  flex-1">
             <div className="">
               <Avvvatars value={comrade.name} size={50} />
             </div>
-            <div className="flex flex-col flex-1 ml-4">
+            <div className="flex flex-col flex-1 w-full ml-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl capitalize">{comrade.name}</h3>
                 <p className="text-sm">{comrade.gpa}</p>
@@ -104,7 +104,7 @@ function Home() {
             <p>Loading...</p>
           </div>
         ) : (
-          <div className="flex flex-col items-center w-full mb-8 sm:w-3/4 sm:flex-row-reverse sm:flex-wrap">
+          <div className="flex flex-col items-stretch w-full mb-8 md:w-4/5 sm:grid sm:grid-cols-2">
             {comrades.map((comrade) => (
               <ComradeCard key={comrade._id} comrade={comrade} />
             ))}
