@@ -101,7 +101,7 @@ function Home() {
           href="https://api.whatsapp.com/send?phone=2348125084717&text=Hi!!!%20I%27m"
         >
           <div className="w-full p-3 py-12 rounded bg-gray-300 flex items-center justify-center italic border border-gray-700 opacity-70 mb-4">
-            Place ads here
+            To place an ADs, click here
           </div>
         </a>
         <h2 className="text-2xl font-bold text-center">
