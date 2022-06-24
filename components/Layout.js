@@ -24,7 +24,7 @@ const Layout = ({ children, title, description }) => (
       key="appBody"
       transition={{ type: "linear", default: { duration: 0.5 } }}
       className="
-                    flex flex-col items-start w-full min-h-screen
+                    flex flex-col items-start w-full  pt-12 min-h-screen
                 "
     >
       {children}
