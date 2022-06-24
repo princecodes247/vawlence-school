@@ -175,6 +175,12 @@ function Comrade() {
                     Share to WhatsApp
                   </a>
                 </div>
+                <a
+                  href="https://instagram.com/astrosoft.io?igshid=YmMyMTA2M2Y="
+                  className="text-blue-500 hover:text-blue-600 underline mt-6"
+                >
+                  Masters and Ph.D coming soon. Follow for updates.
+                </a>
               </div>
             ) : (
               <h2 className="">Comrade not found</h2>

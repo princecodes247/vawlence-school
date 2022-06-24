@@ -8,6 +8,11 @@ const Footer = () => (
     >
       Created by PrinceCodes
     </a>
+    <a href="https://instagram.com/astrosoft.io?igshid=YmMyMTA2M2Y=">
+      <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
+        Follow AstroSoft
+      </div>
+    </a>
     <a
       href="https://www.twitter.com/princecodes247"
       target="_blank"
@@ -24,6 +29,7 @@ const Footer = () => (
     >
       Follow On Instagram
     </a>
+
     <a
       href="https://www.twitter.com/princecodes247"
       target="_blank"
@@ -55,11 +61,7 @@ const Footer = () => (
         Say hi!
       </div>
     </a> */}
-    <a href="https://instagram.com/astrosoft.io?igshid=YmMyMTA2M2Y=">
-      <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
-        Check out AstroSoft
-      </div>
-    </a>
+
     {/* <a href="https://www.buymeacoffee.com/princecodes">
       <div className="font-bold text-primary underline underline-primary hover:text-gray-500 cursor-pointer">
         Support VawulenceFest 2022
