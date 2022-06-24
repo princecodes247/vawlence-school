@@ -31,7 +31,7 @@ const Footer = () => (
     </a>
 
     <a
-      href="https://www.twitter.com/princecodes247"
+      href="https://www.twitter.com/PixellabDavid"
       target="_blank"
       rel="noopener noreferrer"
       className="font-semibold text-primary underline underline-primary"
