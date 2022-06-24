@@ -96,6 +96,11 @@ function Home() {
         </div>
       </section>
       <section className="flex flex-col items-center w-full p-4 py-6 bg-gray-200">
+        <a href="https://api.whatsapp.com/send?phone=2348125084717&text=Hi!!!%20I%27m">
+          <div className="w-full p-3 py-12 rounded bg-gray-300 flex items-center justify-center italic border border-gray-700 opacity-70 mb-4">
+            Place ads here
+          </div>
+        </a>
         <h2 className="text-2xl font-bold text-center">
           Current Holders of Vawulence
         </h2>
