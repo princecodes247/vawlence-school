@@ -55,7 +55,7 @@ function Home() {
   );
   return (
     <Layout>
-      <section className="relative flex flex-col-reverse items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:flex-row lg:text-left lg:h-screen">
+      <section className="relative pt-12 flex flex-col-reverse items-center w-full gap-6 p-0 pb-24 overflow-hidden text-center bg-white lg:flex-row lg:text-left lg:h-screen">
         <div className="relative z-10 flex flex-col items-center gap-6 px-12 lg:p-32 lg:px-24 lg:items-start">
           <h1 className="text-5xl font-bold lg:text-7xl font-header">
             Get your{" "}
