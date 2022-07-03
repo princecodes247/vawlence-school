@@ -54,6 +54,7 @@ const handler = async (req, res) => {
         let res = Math.random() * upperLimit + lowerLimit;
         // Round to two decimal places
         res = Math.round(res * 100) / 100;
+        Number.parseFloat(res.toString());
         return res;
       };
 
