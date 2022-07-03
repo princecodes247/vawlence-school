@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Avvvatars from "avvvatars-react";
 import heroImg from "../public/hero.svg";
 import heroImg2 from "../public/hero2.jpeg";
+import AdImage from "../public/ad1.jpeg";
 import { connect } from "../utils/connection";
 import { useEffect, useState } from "react";
 
@@ -98,12 +99,26 @@ function Home() {
       <section className="flex flex-col items-center w-full p-4 py-6 bg-gray-200">
         <a
           className="w-full"
+          href="https://wa.me/+2347046677800?text=%20Hello%20i%20want%20to%20join%20jerrys%20TV%20my%20name%20is"
+        >
+          <div className="w-2/4 rounded mx-auto  bg-gray-300 flex items-center justify-center italic border border-gray-700 opacity-70 mb-4">
+            <Image
+              src={AdImage}
+              // height={400}
+              className="w-full"
+              // layout="responsive"
+              alt="whatsapp"
+            />
+          </div>
+        </a>
+        {/* <a
+          className="w-full"
           href="https://api.whatsapp.com/send?phone=2348125084717&text=Hi!!!%20I%27m"
         >
           <div className="w-full p-3 py-12 rounded bg-gray-300 flex items-center justify-center italic border border-gray-700 opacity-70 mb-4">
             To place an ADs, click here
           </div>
-        </a>
+        </a> */}
         <h2 className="text-2xl font-bold text-center">
           Current Holders of Vawulence
         </h2>
