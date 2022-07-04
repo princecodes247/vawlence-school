@@ -176,7 +176,7 @@ function Comrade() {
                   </a>
                 </div>
                 <a
-                  href="https://instagram.com/astrosoft.io?igshid=YmMyMTA2M2Y="
+                  href="https://www.twitter.com/princecodes247"
                   className="text-blue-500 hover:text-blue-600 underline mt-6"
                 >
                   Masters and Ph.D coming soon. Follow for updates.
@@ -185,7 +185,7 @@ function Comrade() {
             ) : (
               <h2 className="">Comrade not found</h2>
             )}
-            <div className="w-full flex items-center justify-center mt-12">
+            <div className="w-full flex items-center justify-center my-12">
               <Link href="/getCertified">
                 <a className="px-4 py-2 font-bold text-white text-center hover:brightness-90 bg-primary rounded-lg">
                   Enroll here
