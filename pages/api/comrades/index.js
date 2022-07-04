@@ -85,7 +85,7 @@ const handler = async (req, res) => {
           { name: "Vawulence & Law", weight: 1 },
           { name: "Vawulence & Science", weight: 1 },
           { name: "Vawulence Studies", weight: 1 },
-          { name: "Vawlence  and Philosophy", weight: 1 },
+          { name: "Vawulence and Philosophy", weight: 1 },
           { name: "Vawutronics", weight: 1 },
         ];
         const departmentsSize = departments.length - 2;
