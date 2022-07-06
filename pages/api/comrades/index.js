@@ -84,6 +84,7 @@ const handler = async (req, res) => {
           { name: "Vawulence Engineering", weight: 1 },
           { name: "Vawulence & Finance", weight: 1 },
           { name: "Vawulence & Law", weight: 1 },
+          { name: "Vawulence & Nutrition", weight: 1 },
           { name: "Vawulence & Science", weight: 1 },
           { name: "Vawulence Studies", weight: 1 },
           { name: "Vawulence and Philosophy", weight: 1 },
