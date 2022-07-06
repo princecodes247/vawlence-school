@@ -39,6 +39,7 @@ const courses = [
   { name: "Vawulence Engineering" },
   { name: "Vawulence & Finance" },
   { name: "Vawulence & Law" },
+  { name: "Vawulence & Nutrition" },
   { name: "Vawulence & Science" },
   { name: "Vawulence Studies" },
   { name: "Vawlence  and Philosophy" },
